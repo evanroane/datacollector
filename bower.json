@@ -1,0 +1,26 @@
+{
+  "name": "DataCollector",
+  "version": "0.0.1",
+  "authors": [
+    "evanroane <evan.roane@gmail.com>"
+  ],
+  "main": "index.html",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery-mobile": "~1.4.5",
+    "jquery": "~2.1.1",
+    "angular": "~1.3.5",
+    "moment": "~2.8.4"
+  },
+  "resolutions": {
+    "jquery": "~2.1.1"
+  }
+}
