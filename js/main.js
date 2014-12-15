@@ -1,8 +1,11 @@
-var startTime;
-var startSeconds;
-var fullStartDate;
-var timeoutID;
+var beginTime;
+
+
 var endTime;
+
+var s = 0;
+var m = 0;
+var h = 0;
 
 var TimeCtrl = (function () {
   $ui = {
@@ -18,38 +21,22 @@ var TimeCtrl = (function () {
     return i;
   }
 
-  function noZero(i) {
-    if (i === 0) {
-      i = 60
-    }
-    return i;
-  }
-
-  function clock() {
-    var currentTime = new Date();
-    var h = noZero(currentTime.getUTCHours());
-    var m = noZero(currentTime.getUTCMinutes());
-    var s = noZero(currentTime.getUTCSeconds());
-    var hrs = dispZero(h - startTime.getUTCHours());
-    var min = dispZero(m - startTime.getUTCMinutes());
-    var sec = dispZero(s - startTime.getUTCSeconds());
-    var hms = hrs + ":" + min + ":" + sec;
-
-    console.log(currentTime.getUTCSeconds());
-    console.log(startTime.getUTCSeconds());
-    console.log(currentTime.getUTCSeconds() - startTime.getUTCSeconds());
-    console.log(sec);
-    document.getElementById('time-container').innerHTML = hms;
-    // setTimeout('TimeCtrl.clock()', 1000);
-    timeoutID = setTimeout('TimeCtrl.clock()', 1000);
+  function displayTimer(){
+    var secondsSinceBegin = moment.duration(Date.now() - beginTime).asSeconds();
+    var formatAsTimer = moment()
+    .hour(0)
+    .minute(0)
+    .second(secondsSinceBegin)
+    .format('H:mm:ss');
+    document.getElementById('time-container').innerHTML = formatAsTimer;
+    console.log(formatAsTimer);
   }
 
   function startTimer() {
     var now = new Date();
-    startSeconds = now.getTime();
 
-    fullStartDate = moment.utc(startSeconds)._d;
-    clock();
+
+    setInterval(displayTimer, 1000);
   }
 
   function stopTimer() {
@@ -58,19 +45,17 @@ var TimeCtrl = (function () {
   }
 
   return {
-    startClock: startTimer,
+    startTimer: startTimer,
     stopClock: stopTimer,
-    clock: clock,
-    timeoutID: timeoutID
   };
 })();
 
 $( '#start' ).click(function() {
-  startTime = new Date();
-  TimeCtrl.startClock();
+  beginTime = new Date();
+  TimeCtrl.startTimer();
   startHMS = moment().format('MMMM Do YYYY, h:mm:ss a');
   $( '.records' ).append('Starting Date and Time: ' + startHMS + "<br>" );
-  return startTime, startHMS;
+    return beginTime;
 });
 
 $( '#stop' ).click(function() {
@@ -83,6 +68,7 @@ $( '#stop' ).click(function() {
 
 $( '#arms' ).click(function(startHMS) {
   var arms = new Date();
-  var x = Math.floor((arms - startTime) / 1000);
+  var x = Math.floor((arms - beginTime) / 1000);
   $( '.records' ).append('Folded arms: ' + x + "<br>" );
+  console.log(x);
 });
