@@ -1,6 +1,7 @@
 var startTime;
 var startSeconds;
 var fullStartDate;
+var timeoutID;
 var endTime;
 
 var TimeCtrl = (function () {
@@ -39,17 +40,20 @@ var TimeCtrl = (function () {
     console.log(currentTime.getUTCSeconds() - startTime.getUTCSeconds());
     console.log(sec);
     document.getElementById('time-container').innerHTML = hms;
-    setTimeout('TimeCtrl.clock()', 1000);
+    // setTimeout('TimeCtrl.clock()', 1000);
+    timeoutID = setTimeout('TimeCtrl.clock()', 1000);
   }
 
   function startTimer() {
     var now = new Date();
     startSeconds = now.getTime();
+
     fullStartDate = moment.utc(startSeconds)._d;
     clock();
   }
 
   function stopTimer() {
+    clearTimeout(timeoutID);
     console.log('The Timer Has Been Stopped')
   }
 
@@ -57,15 +61,11 @@ var TimeCtrl = (function () {
     startClock: startTimer,
     stopClock: stopTimer,
     clock: clock,
+    timeoutID: timeoutID
   };
 })();
 
-// TimeCtrl.$start.addEventListener('click', TimeCtrl.startClock, false);
-
-// TimeCtrl.$stop.addEventListener('click', TimeCtrl.stopClock, false);
-
-
-$( '#start' ).click(function(){
+$( '#start' ).click(function() {
   startTime = new Date();
   TimeCtrl.startClock();
   startHMS = moment().format('MMMM Do YYYY, h:mm:ss a');
@@ -73,14 +73,15 @@ $( '#start' ).click(function(){
   return startTime, startHMS;
 });
 
-$( '#stop' ).click(function(){
+$( '#stop' ).click(function() {
   endTime = new Date();
+  timeoutID = clearTimeout(timeoutID);
   TimeCtrl.stopClock();
   var endHMS = moment().format('MMMM Do YYYY, h:mm:ss a');
   $( '.records' ).append( 'End Time' + endHMS + '<br>' );
 });
 
-$( '#arms' ).click(function(startHMS){
+$( '#arms' ).click(function(startHMS) {
   var arms = new Date();
   var x = Math.floor((arms - startTime) / 1000);
   $( '.records' ).append('Folded arms: ' + x + "<br>" );
