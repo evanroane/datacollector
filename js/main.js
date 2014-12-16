@@ -61,7 +61,7 @@ $( '#arms' ).click(function() {
   } else {
     var now = new Date();
     var eventTime = Math.floor((now - beginTime) / 1000);
-    $( '.records' ).append('Folded arms: ' + eventTime + '<br>' );
+    $( '.records' ).append( {{}} + ': ' + eventTime + '<br>' );
     console.log(eventTime);
   }
 });
