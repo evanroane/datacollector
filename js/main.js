@@ -55,8 +55,6 @@ var TimeCtrl = (function() {
 TimeCtrl.startControl.addEventListener('click', TimeCtrl.startTimer, false);
 TimeCtrl.stopControl.addEventListener('click', TimeCtrl.stopTimer, false);
 
-var timerNotRunning = !false;
-
 $( '#arms' ).click(function() {
   if (timerNotRunning === true) {
     console.log("Not going to happen");
