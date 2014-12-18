@@ -1,0 +1,58 @@
+<div ui-content-for="title">
+  <span>Create Account</span>
+</div>
+
+<div class="scrollable">
+  <div class="scrollable-content section">
+
+    <form role="form" ng-submit='createAccount()'>
+      <fieldset>
+        <legend>Create Account</legend>
+        <div class="form-group has-success has-feedback">
+          <label>First Name:</label>
+          <input type="text"
+          ng-model="firstName"
+          class="form-control"
+          placeholder="Enter first name">
+
+          <label>Last Name:</label>
+          <input type="text"
+          ng-model="lastName"
+          class="form-control"
+          placeholder="Enter last name">
+
+          <label>Occupation: <small>(e.g. Clinical Psychologist, Behavior Analyst, Social Worker, etc.)</small></label>
+          <input type="text"
+          ng-model="lastName"
+          class="form-control"
+          placeholder="Enter last name">
+
+          <label>Email Address: <small>(Note: Your email address will be used with your password to log in.)</small></label>
+          <input type="email"
+          ng-model="email"
+          class="form-control"
+          placeholder="Enter email">
+        </div>
+
+        <div class="form-group">
+          <label>Password: <small>xkcd</small></label>
+          <input type="password"
+          class="form-control"
+          placeholder="Password">
+        </div>
+      </fieldset>
+      <hr>
+
+      <button class="btn btn-primary btn-block">
+        Login
+      </button>
+
+      <div ui-content-for="navbarAction">
+        <a class='btn' ng-click='login()'>Login</a>
+      </div>
+      <div class="media-body media">
+        <a href="">Forgot Your Password?</a>
+      </div>
+    </form>
+  </div>
+</div>
