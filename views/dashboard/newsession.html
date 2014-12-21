@@ -1,0 +1,20 @@
+<div ui-content-for="title">
+	<span>Current Session</span>
+</div>
+
+<div class="scrollable">
+	<div class="scrollable-content section">
+
+		<h1>Data Collector</h1>
+		<div class="center">
+			<div class="stopwatch" id="stopwatch">
+				<div id="time-container" class="time-container"></div>
+				<a class="btn btn-primary" id="start" ng-click="time.startSession()">Start</a>
+				<a class="btn btn-primary" id="stop" ng-click="time.endSession()">Stop</a>
+			</div>
+
+			<a class="btn btn-primary" ng-click="time.event()">Crossing Arms</a>
+			<div class="records"></div>
+		</div>
+	</div>
+</div>
