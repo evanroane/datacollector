@@ -1,0 +1,39 @@
+<div ui-content-for="title">
+  <span>New Code Set</span>
+</div>
+
+<div class="scrollable">
+  <div class="scrollable-content section">
+
+    <form role="form" name="createCodeSet" ng-submit='createNewCodeSet()' novalidate>
+      <fieldset>
+        <legend>Create New Code Set</legend>
+        <div class="form-group has-success has-feedback">
+
+        <div class="">
+          <h4>Define Inuput</h4>
+          <label>Input Name:</label>
+          <input type="text"
+          ng-model="buttonName"
+          class="form-control"
+          placeholder="">
+
+          <label>Input Color:</label>
+          <select>
+            <option value="blue" selected="selected">Blue</option>
+            <option value="yellow">Yellow</option>
+            <option value="green">Green</option>
+            <option value="red">Red</option>
+          </select>
+        <hr>
+        </div>
+<a class="btn btn-primary">Add Another</a>
+
+
+    </fieldset>
+    <hr>
+    <a class="btn btn-primary btn-block" ng-class="{disabled: createAccount.$invalid}" ng-click="new.createAccount()">Save Code Set</a>
+
+  </form>
+</div>
+</div>

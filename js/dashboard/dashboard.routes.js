@@ -11,21 +11,27 @@ angular.module('batApp')
         reloadOnSearch: false
       }
     );
-    $routeProvider.when('/newrepertoire',
+    $routeProvider.when('/newcodeset',
       {
-        templateUrl: 'views/newrepertoire.html',
+        templateUrl: 'views/dashboard/newcodeset.html',
+        /*controller: 'CodeSetController',
+        controllerAs: 'codeSet', */
         reloadOnSearch: false
       }
     );
-    $routeProvider.when('/editrepertoire',
+    $routeProvider.when('/editcodesets',
       {
-        templateUrl: 'views/repertoirelist.html',
+        templateUrl: 'views/dashboard/editcodesets.html',
+        /*controller: 'CodeSetController',
+        controllerAs: 'codeSet', */
         reloadOnSearch: false
       }
     );
     $routeProvider.when('/sessiondata',
       {
-        templateUrl: 'views/sessiondata.html',
+        templateUrl: 'views/dashboard/sessiondata.html',
+        controller: 'TimeController',
+        controllerAs: 'time',
         reloadOnSearch: false
       }
     );

@@ -9,12 +9,20 @@
 		<div class="center">
 			<div class="stopwatch" id="stopwatch">
 				<div id="time-container" class="time-container"></div>
-				<a class="btn btn-primary" id="start" ng-click="time.startSession()">Start</a>
-				<a class="btn btn-primary" id="stop" ng-click="time.endSession()">Stop</a>
+				<a class="btn btn-primary" ng-click="time.startSession()">Start</a>
+				<a class="btn btn-primary" ng-click="time.endSession()">Stop</a>
 			</div>
 
 			<a class="btn btn-primary" ng-click="time.event()">Crossing Arms</a>
+			<a class="btn btn-primary" ng-click="time.newEvent('smile')">smile</a>
 			<div class="records"></div>
 		</div>
 	</div>
 </div>
+<!--
+<div ng-repeat>
+	<a ng-click="button.dataPoint({{buttonId}})">
+	{{buttonName}}
+	</a>
+</div>
+-->

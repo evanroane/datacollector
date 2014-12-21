@@ -58,12 +58,22 @@
       }
     }
 
+    function newDataEvent(eventName) {
+      if (timerRunning === false) {
+        console.log("Not going to happen");
+      } else {
+        var now = new Date();
+        var eventTime = Math.floor((now - beginTime) / 1000);
+        $( '.records' ).append( eventName + ': ' + eventTime + '<br>' );
+        console.log(eventTime);
+      }
+    }
+
     return {
       startTimer: startTimer,
       stopTimer: stopTimer,
       dataEvent: dataEvent,
-      startControl: $ui.startControl,
-      stopControl: $ui.stopControl
+      newDataEvent: newDataEvent
     };
 
   })

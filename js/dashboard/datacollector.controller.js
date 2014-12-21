@@ -17,5 +17,9 @@
     timeFactory.dataEvent();
   }
 
+  vm.newEvent = function(eventName) {
+    timeFactory.newDataEvent(eventName);
+  }
+
   });
 }());
