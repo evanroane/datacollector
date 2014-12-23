@@ -2,7 +2,7 @@
   'use strict';
 
   angular.module('batApp')
-  .controller('CodeSetController', function(){
+  .controller('CodeSetController', function(codeSetFactory){
 
   });
 }());

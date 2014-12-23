@@ -9,12 +9,6 @@
     timer;
     var timerRunning = !true;
 
-    var $ui = {
-      display: document.getElementById('time-container'),
-      startControl: document.getElementById('start'),
-      stopControl: document.getElementById('stop')
-    };
-
     function displayTimer(){
       var secondsSinceBegin = moment.duration(Date.now() - beginTime).asSeconds();
       var formatAsTimer = moment()
