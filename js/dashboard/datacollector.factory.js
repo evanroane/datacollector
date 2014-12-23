@@ -28,23 +28,30 @@
     }
 
     function startTimer() {
-
-      beginTime = new Date();
-      timer = setInterval(function() {displayTimer() }, 1000);
-      timerRunning = true;
-      var startFullDate = moment(beginTime).format('MMMM Do YYYY, h:mm:ss a');
-      $( '.records' ).append('Started: ' + startFullDate + "<br>" );
-      return timerRunning;
+      if (timerRunning === true) {
+        console.log("Timer is already started");
+      } else {
+        beginTime = new Date();
+        timer = setInterval(function() {displayTimer() }, 1000);
+        timerRunning = true;
+        var startFullDate = moment(beginTime).format('MMMM Do YYYY, h:mm:ss a');
+        $( '.records' ).append('Started: ' + startFullDate + "<br>" );
+        return timerRunning;
+      }
     }
 
     function stopTimer() {
-      endTime = new Date();
-      timerRunning = false;
-      var endFullDate = moment(endTime).format('MMMM Do YYYY, h:mm:ss a');
-      $( '.records' ).append( 'Ended: ' + endFullDate + '<br>' );
-      clearInterval(timer);
-      console.log('The Timer Has Been Stopped');
-      return timerRunning;
+      if (timerRunning === false) {
+        console.log("You can't stop a timer that isn't running");
+      } else {
+        endTime = new Date();
+        timerRunning = false;
+        var endFullDate = moment(endTime).format('MMMM Do YYYY, h:mm:ss a');
+        $( '.records' ).append( 'Ended: ' + endFullDate + '<br>' );
+        clearInterval(timer);
+        console.log('The Timer Has Been Stopped');
+        return timerRunning;
+      }
     }
 
     function dataEvent() {
