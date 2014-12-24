@@ -21,5 +21,5 @@
     timeFactory.newDataEvent(eventName);
   }
 
-  });
+ });
 }());

@@ -14,16 +14,16 @@ angular.module('batApp')
     $routeProvider.when('/newcodeset',
       {
         templateUrl: 'views/dashboard/newcodeset.html',
-        /*controller: 'CodeSetController',
-        controllerAs: 'codeSet', */
+        controller: 'CodeSetController',
+        controllerAs: 'codeSet',
         reloadOnSearch: false
       }
     );
     $routeProvider.when('/editcodesets',
       {
         templateUrl: 'views/dashboard/editcodesets.html',
-        /*controller: 'CodeSetController',
-        controllerAs: 'codeSet', */
+        controller: 'CodeSetController',
+        controllerAs: 'codeSet',
         reloadOnSearch: false
       }
     );
