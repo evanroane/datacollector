@@ -9,8 +9,7 @@
       {
         id: "input1",
         name: "Mand",
-        color: "yellow"
-
+        color: "red"
       }
     ];
 
