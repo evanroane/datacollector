@@ -9,7 +9,7 @@
       {
         id: "input1",
         name: "Mand",
-        color: "red"
+        color: "btn-danger"
       }
     ];
 
@@ -24,9 +24,11 @@
       );
     };
 
-    $scope.showInputLabel = function (input) {
-      return input.id === $scope.inputs[0].id;
-    }
+    vm.addNewCodeSet = function() {
+      var inputs = $scope.inputs;
+      codeSetFactory.createCodeSet(inputs, function(data) {
+      });
+    };
 
   });
 }());

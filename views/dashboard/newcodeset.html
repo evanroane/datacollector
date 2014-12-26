@@ -7,7 +7,7 @@
     <form role="form" name="createCodeSet" ng-submit='createNewCodeSet()' novalidate>
       <legend>Create New Code Set</legend>
       <div class="form-group has-success has-feedback" data-ng-repeat="input in inputs">
-        <label>  <!--for="input.name" ng-show="showInputLabel(input)" -->
+        <label>
           Input Name:
         </label>
         <input
@@ -17,10 +17,10 @@
         placeholder="">
         <label>Input Color:</label>
         <select ng-model="input.color">
-          <option value="blue" selected="selected">Blue</option>
-          <option value="yellow">Yellow</option>
-          <option value="green">Green</option>
-          <option value="red">Red</option>
+          <option value="btn-primary" selected="selected">Blue</option>
+          <option value="btn-warning">Yellow</option>
+          <option value="btn-success">Green</option>
+          <option value="btn-danger">Red</option>
         </select>
         <br>
         <a class="btn btn-primary" ng-show="$last" ng-click="addNewInput()">
@@ -29,11 +29,11 @@
       </div>
 
   <div id="inputsDisplay">
-      {{ inputs }}
+      inputs = {{ inputs }}
   </div>
 
     <hr>
-    <a class="btn btn-primary btn-block" ng-class="{disabled: createAccount.$invalid}" ng-click="new.createAccount()">Save Code Set</a>
+    <a class="btn btn-primary btn-block" ng-click="codeSet.addNewCodeSet()">Save Code Set</a>
 
     </form>
   </div>
