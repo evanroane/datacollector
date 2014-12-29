@@ -5,23 +5,35 @@
 <div class="scrollable">
 	<div class="scrollable-content section">
 
-		<h1>Data Collector</h1>
-		<div class="center">
-			<div class="stopwatch" id="stopwatch">
-				<div id="time-container" class="time-container"></div>
-				<a class="btn btn-primary" ng-click="time.startSession()">Start</a>
-				<a class="btn btn-primary" ng-click="time.endSession()">Stop</a>
+		<div class="stopwatch">
+			<div id="time-container"></div>
+		</div>
+
+		<div class="inputs">
+
+			<div class="start-stop-btns">
+				<div class="start-left">
+					<a class="btn btn-success btn-block" ng-click="time.startSession()">Start</a>
+				</div>
+				<div class="stop-right">
+					<a class="btn btn-danger btn-block" ng-click="time.endSession()">Stop</a>
+				</div>
 			</div>
 
-			<a class="btn btn-primary" ng-click="time.event()">Crossing Arms</a>
-			<a class="btn btn-primary" ng-click="time.newEvent('smile')">smile</a>
-			<div class="records"></div>
+		<! -- hr -->
+
+			<div class="usr-btns">
+				<a class="btn btn-primary" ng-click="time.newEvent('Crossing Arms')">Crossing Arms</a>
+				<a class="btn btn-primary" ng-click="time.newEvent('Smile')">Smile</a>
+			</div>
 		</div>
+
+		<div class="records"></div>
 	</div>
 </div>
 <!--
 <div ng-repeat>
-	<a ng-click="button.dataPoint({{buttonId}})">
+	<a class="{{color}}" ng-click="button.dataPoint({{buttonName}})">
 	{{buttonName}}
 	</a>
 </div>
