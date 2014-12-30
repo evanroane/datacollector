@@ -11,6 +11,14 @@ angular.module('batApp')
         reloadOnSearch: false
       }
     );
+    $routeProvider.when('/viewcodesets',
+      {
+        templateUrl: 'views/dashboard/viewcodesets.html',
+        controller: 'ShowCodeSetController',
+        controllerAs: 'viewCodeSet',
+        reloadOnSearch: false
+      }
+    );
     $routeProvider.when('/newcodeset',
       {
         templateUrl: 'views/dashboard/newcodeset.html',

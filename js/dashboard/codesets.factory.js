@@ -25,8 +25,20 @@
       });
     }
 
+    function getCodeSet(id, cb){
+      $http.get(_batUrl(id))
+      .success(function(data){
+        cb(data);
+      })
+      .error(function(err){
+        console.log(err);
+      });
+    }
+
+
     return {
-      createCodeSet: createCodeSet
+      createCodeSet: createCodeSet,
+      getCodeSet: getCodeSet
     };
 
   })

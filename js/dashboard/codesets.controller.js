@@ -29,6 +29,13 @@
       codeSetFactory.createCodeSet(inputs, function(data) {
       });
     };
+  })
+  .controller('ShowCodeSetController', function($routeParams, codeSetFactory){
+    var vm = this;
+    var id = $routeParams.id;
+    codeSetFactory.getCodeSet(id, function(data){
+      vm.codeSet = data;
+    });
+  })
 
-  });
 }());
