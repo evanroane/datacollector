@@ -5,17 +5,29 @@
   .controller('CodeSetController', function($scope, codeSetFactory) {
     var vm = this;
 
-    $scope.inputs = [
-      {
-        id: "input1",
-        name: "Mand",
-        color: "btn-danger"
-      }
-    ];
+    // $scope.inputs = [
+    //   {
+    //     id: "input1",
+    //     name: "Mand",
+    //     color: "btn-primary"
+    //   }
+    // ];
+
+    $scope.codeSetData = {
+      codeSetId: "The First Ever",
+      description: "This code set has mands and elopment and other cool behavioral stuff",
+      inputs: [
+        {
+          id: "input1",
+          name: "Mand",
+          color: "btn-primary"
+        }
+      ]
+    };
 
     $scope.addNewInput = function() {
-      var newInputNum = $scope.inputs.length+1;
-      $scope.inputs.push(
+      var newInputNum = $scope.codeSetData.inputs.length+1;
+      $scope.codeSetData.inputs.push(
         {
           "id": "input" + newInputNum,
           "name": "",
@@ -25,7 +37,7 @@
     };
 
     vm.addNewCodeSet = function() {
-      var inputs = $scope.inputs;
+      var inputs = $scope.codeSetData;
       codeSetFactory.createCodeSet(inputs, function(data) {
       });
     };

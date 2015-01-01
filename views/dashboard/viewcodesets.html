@@ -4,23 +4,23 @@
 
 <div class="scrollable">
   <div class="scrollable-content">
+
     <div class="section" ng-repeat="(codeSetId, codeSet) in viewCodeSet.codeSet">
       <div class="panel panel-default">
         <div class="panel-heading">
           <div class="btn-group pull-right">
 
-            <a ui-turn-on='myDropdown' class='btn'>
+            <a ui-turn-on='dropdown' class='btn'>
               <i class="fa fa-chevron-circle-down fa-lg"></i>
             </a>
             <ul
               class="dropdown-menu"
-              ui-outer-click="Ui.turnOff('myDropdown')"
-              ui-outer-click-if="Ui.active('myDropdown')"
+              ui-outer-click="Ui.turnOff('dropdown')"
+              ui-outer-click-if="Ui.active('dropdown')"
               role="menu"
-              ui-show="myDropdown"
-              ui-state="myDropdown"
-              ui-turn-off="myDropdown">
-
+              ui-show="dropdown"
+              ui-state="dropdown"
+              ui-turn-off="dropdown">
               <li><a href="/#/{{codeSetId}}">Begin Session with Code Set</a></li>
               <li><a href="/#/{{codeSetId}}/edit">Edit Code Set</a></li>
               <li class="divider"></li>
@@ -34,5 +34,6 @@
         </div>
       </div>
     </div>
+
   </div>
 </div>
