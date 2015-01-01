@@ -35,10 +35,20 @@
       });
     }
 
+    function editCodeSet(id, codeSetId){
+      $http.put(_batUrl(id), codeSetId)
+      .success(function(data){
+        $location.path('/viewcodesets');
+      })
+      .error(function(err){
+        console.log(err);
+      });
+    }
 
     return {
       createCodeSet: createCodeSet,
-      getCodeSet: getCodeSet
+      getCodeSet: getCodeSet,
+      editCodeSet: editCodeSet
     };
 
   })

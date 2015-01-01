@@ -3,9 +3,9 @@
 
 angular.module('batApp')
   .config(function($routeProvider){
-    $routeProvider.when('/newsession',
+    $routeProvider.when('/session',
       {
-        templateUrl: 'views/dashboard/newsession.html',
+        templateUrl: 'views/dashboard/session.html',
         controller: 'TimeController',
         controllerAs: 'time',
         reloadOnSearch: false
@@ -27,17 +27,17 @@ angular.module('batApp')
         reloadOnSearch: false
       }
     );
-    $routeProvider.when('/editcodesets',
-      {
-        templateUrl: 'views/dashboard/editcodesets.html',
-        controller: 'CodeSetController',
-        controllerAs: 'codeSet',
-        reloadOnSearch: false
-      }
+    $routeProvider.when('/codeset/:id/edit',
+    {
+      templateUrl: 'views/dashboard/editcodeset.html',
+      controller: 'EditCodeSetController',
+      controllerAs: 'codeSet',
+      reloadOnSearch: false
+    }
     );
-    $routeProvider.when('/sessiondata',
+    $routeProvider.when('/codeset/:id',
       {
-        templateUrl: 'views/dashboard/sessiondata.html',
+        templateUrl: 'views/session.html',
         controller: 'TimeController',
         controllerAs: 'time',
         reloadOnSearch: false

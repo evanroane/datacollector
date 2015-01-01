@@ -1,5 +1,5 @@
 <div ui-content-for="title">
-  <span>New Code Set</span>
+  <span>Edit Code Set</span>
 </div>
 
 <div class="scrollable">
@@ -10,13 +10,13 @@
         <label>
           Code Set Label:
         </label>
-        <input type="text" ng-model="codeSetData.codeSetId" class="form-control">
+        <input type="text" ng-model="codeSet.codeSetData.codeSetId" class="form-control">
         <label>
           Code Set Description:
         </label>
-        <input type="text" ng-model="codeSetData.description" class="form-control">
+        <input type="text" ng-model="codeSet.codeSetData.description" class="form-control">
       </div>
-      <div class="form-group has-success has-feedback" data-ng-repeat="input in codeSetData.inputs">
+      <div class="form-group has-success has-feedback" data-ng-repeat="input in codeSet.codeSetData.inputs">
         <label>
           Input Name:
         </label>
@@ -34,7 +34,7 @@
         </a>
       </div>
       <div id="inputsDisplay">
-        codeSetData = {{ codeSetData }}
+        codeSet.codeSetData = {{ codeSet.codeSetData }}
       </div>
     <hr>
     <a class="btn btn-primary btn-block" ng-click="codeSet.addNewCodeSet()">Save Code Set</a>

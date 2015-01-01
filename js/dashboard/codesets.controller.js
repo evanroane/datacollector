@@ -2,16 +2,8 @@
   'use strict';
 
   angular.module('batApp')
-  .controller('CodeSetController', function($scope, codeSetFactory) {
+  .controller('CodeSetController', function($scope, $location, codeSetFactory) {
     var vm = this;
-
-    // $scope.inputs = [
-    //   {
-    //     id: "input1",
-    //     name: "Mand",
-    //     color: "btn-primary"
-    //   }
-    // ];
 
     $scope.codeSetData = {
       codeSetId: "The First Ever",
@@ -40,14 +32,40 @@
       var inputs = $scope.codeSetData;
       codeSetFactory.createCodeSet(inputs, function(data) {
       });
+      $location.path('/viewcodesets');
     };
   })
+
   .controller('ShowCodeSetController', function($routeParams, codeSetFactory){
     var vm = this;
     var id = $routeParams.id;
     codeSetFactory.getCodeSet(id, function(data){
       vm.codeSet = data;
     });
+  })
+
+  .controller('EditCodeSetController', function($scope, $routeParams, codeSetFactory){
+    var vm = this;
+    var id = $routeParams.id;
+    codeSetFactory.getCodeSet(id, function(data){
+      vm.codeSetData = data;
+    });
+
+    vm.addNewCodeSet = function() {
+      codeSetFactory.editCodeSet(id, vm.codeSetData);
+    };
+
+    vm.addNewInput = function() {
+      var newInputNum = vm.codeSetData.inputs.length+1;
+      vm.codeSetData.inputs.push(
+        {
+          "id": "input" + newInputNum,
+          "name": "",
+          "color": ""
+        }
+      );
+    };
+
   })
 
 }());
