@@ -57,6 +57,7 @@
 
     vm.addNewInput = function() {
       var newInputNum = vm.codeSetData.inputs.length+1;
+      console.log(newInputNum);
       vm.codeSetData.inputs.push(
         {
           "id": "input" + newInputNum,
