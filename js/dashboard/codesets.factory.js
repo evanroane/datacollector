@@ -14,8 +14,8 @@
       }
     }
 
-    function createCodeSet(inputs, cb){
-      $http.post(_batUrl(), inputs)
+    function createCodeSet(codeSet, cb){
+      $http.post(_batUrl(), codeSet)
       .success(function(data){
         console.log('data sent to FB');
         cb(data);
@@ -35,6 +35,16 @@
       });
     }
 
+    function getAllCodeSets(cb){
+      $http.get(_batUrl())
+      .success(function(data){
+        cb(data);
+      })
+      .error(function(err){
+        console.log(err);
+      });
+    }
+
     function editCodeSet(id, codeSetId){
       $http.put(_batUrl(id), codeSetId)
       .success(function(data){
@@ -45,10 +55,22 @@
       });
     }
 
+    function deleteCodeSet(codeSetId, cb){
+      $http.delete(_batUrl(codeSetId))
+      .success(function(){
+        cb();
+        console.log('code set deleted')
+      })
+      .error(function(err){
+        console.log(err);
+      });
+    }
+
     return {
       createCodeSet: createCodeSet,
       getCodeSet: getCodeSet,
-      editCodeSet: editCodeSet
+      editCodeSet: editCodeSet,
+      deleteCodeSet: deleteCodeSet
     };
 
   })

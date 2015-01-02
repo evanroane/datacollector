@@ -39,14 +39,23 @@
   .controller('ShowCodeSetController', function($routeParams, codeSetFactory){
     var vm = this;
     var id = $routeParams.id;
+
     codeSetFactory.getCodeSet(id, function(data){
       vm.codeSet = data;
     });
+
+    vm.removeCodeSet = function(codeSetId) {
+      codeSetFactory.deleteCodeSet(codeSetId, function() {
+        delete vm.codeSet[codeSetId];
+      });
+    };
+
   })
 
   .controller('EditCodeSetController', function($scope, $routeParams, codeSetFactory){
     var vm = this;
     var id = $routeParams.id;
+
     codeSetFactory.getCodeSet(id, function(data){
       vm.codeSetData = data;
     });
@@ -57,7 +66,6 @@
 
     vm.addNewInput = function() {
       var newInputNum = vm.codeSetData.inputs.length+1;
-      console.log(newInputNum);
       vm.codeSetData.inputs.push(
         {
           "id": "input" + newInputNum,
@@ -66,7 +74,6 @@
         }
       );
     };
-
   })
 
 }());

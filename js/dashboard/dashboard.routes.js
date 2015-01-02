@@ -15,8 +15,7 @@ angular.module('batApp')
       {
         templateUrl: 'views/dashboard/viewcodesets.html',
         controller: 'ShowCodeSetController',
-        controllerAs: 'viewCodeSet',
-        reloadOnSearch: false
+        controllerAs: 'viewCodeSet'
       }
     );
     $routeProvider.when('/newcodeset',
