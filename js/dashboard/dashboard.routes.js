@@ -36,7 +36,7 @@ angular.module('batApp')
     );
     $routeProvider.when('/codeset/:id',
       {
-        templateUrl: 'views/session.html',
+        templateUrl: 'views/dashboard/session.html',
         controller: 'TimeController',
         controllerAs: 'time',
         reloadOnSearch: false

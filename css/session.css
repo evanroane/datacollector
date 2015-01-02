@@ -1,5 +1,5 @@
 .stopwatch {
-
+  padding-bottom: 0.125em;
 }
 
 #time-container {
@@ -22,7 +22,11 @@
   margin-top: 0.125em;
 }
 
-.start-stop-btns {}
+.start-stop-btns {
+  padding-top: 0.125em;
+  border-bottom: 1px solid #000000;
+  height: 3em;
+}
 
 .start-left {
   width: 49.5%;

@@ -5,11 +5,11 @@
 <div class="scrollable">
 	<div class="scrollable-content section">
 
-		<div class="stopwatch">
-			<div id="time-container"></div>
-		</div>
+		<div class="section">
 
-		<div class="inputs">
+			<div class="stopwatch bottomline">
+				<div id="time-container"></div>
+			</div>
 
 			<div class="start-stop-btns">
 				<div class="start-left">
@@ -20,10 +20,19 @@
 				</div>
 			</div>
 
-			<div class="usr-btns">
-				<a class="btn btn-primary" ng-click="time.newEvent('Crossing Arms')">Crossing Arms</a>
-				<a class="btn btn-primary" ng-click="time.newEvent('Smile')">Smile</a>
-			</div>
+		</div>
+
+		<div class="section">
+
+				<div class="usr-btns">
+
+					<div ng-repeat="(id, button) in time.codeSetData.inputs">
+						<a class="btn btn-block" ng-class="button.color" ng-click="time.newEvent(button.name)">{{button.name}}</a>
+						<br>
+					</div>
+
+				</div>
+
 		</div>
 
 		<div class="records"></div>

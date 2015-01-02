@@ -2,8 +2,13 @@
   'use strict';
 
   angular.module('batApp')
-  .controller('TimeController', function(timeFactory){
+  .controller('TimeController', function($routeParams, timeFactory, codeSetFactory){
   var vm = this;
+  var id = $routeParams.id;
+
+  codeSetFactory.getCodeSet(id, function(data){
+    vm.codeSetData = data;
+  });
 
   vm.startSession = function() {
     timeFactory.startTimer();
