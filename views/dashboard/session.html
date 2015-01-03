@@ -13,10 +13,10 @@
 
 			<div class="start-stop-btns">
 				<div class="start-left">
-					<a class="btn btn-success btn-block" ng-click="time.startSession()">Start</a>
+					<a class="btn btn-success btn-block" ng-click="time.startTimer()">Start</a>
 				</div>
 				<div class="stop-right">
-					<a class="btn btn-danger btn-block" ng-click="time.endSession()">Stop</a>
+					<a class="btn btn-danger btn-block" ng-click="time.stopTimer()">Stop</a>
 				</div>
 			</div>
 
@@ -27,7 +27,7 @@
 				<div class="usr-btns">
 
 					<div ng-repeat="(id, button) in time.codeSetData.inputs">
-						<a class="btn btn-block" ng-class="button.color" ng-click="time.newEvent(button.name)">{{button.name}}</a>
+						<a class="btn btn-block" ng-class="button.color" ng-click="time.dataEvent(button.name, button.id)">{{button.name}}</a>
 						<br>
 					</div>
 
