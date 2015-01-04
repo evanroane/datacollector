@@ -17,7 +17,7 @@
     function createCodeSet(codeSet, cb){
       $http.post(_batUrl(), codeSet)
       .success(function(data){
-        console.log('data sent to FB');
+        console.log('code set sent to FB');
         cb(data);
       })
       .error(function(err){

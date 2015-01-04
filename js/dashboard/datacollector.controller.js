@@ -2,20 +2,26 @@
   'use strict';
 
   angular.module('batApp')
-  .controller('TimeController', function($scope, $routeParams, codeSetFactory){
+  .controller('TimeController', function($scope, $routeParams, codeSetFactory, timeFactory){
   var vm = this;
   var id = $routeParams.id;
+  var beginTime,
+    endTime,
+    timer;
+  var timerRunning = !true;
+
+  $scope.sessionData = {
+    "startDate": "a",
+    "endDate": "b",
+    "name": "c",
+    "description": "d",
+    "codeSetName": "e",
+    "behaviorInstances": []
+  };
 
   codeSetFactory.getCodeSet(id, function(data){
     vm.codeSetData = data;
   });
-
-  $scope.instances = [];
-
-  var beginTime,
-  endTime,
-  timer;
-  var timerRunning = !true;
 
   vm.displayTimer = function() {
     var secondsSinceBegin = moment.duration(Date.now() - beginTime).asSeconds();
@@ -27,7 +33,7 @@
     document.getElementById('time-container').innerHTML = formatAsTimer;
     // setTimeout(function() {timerRunning && timer()}, 1000)
     console.log(formatAsTimer);
-  }
+  };
 
   vm.startTimer = function() {
     if (timerRunning === true) {
@@ -40,7 +46,7 @@
       $( '.records' ).append('Started: ' + startFullDate + "<br>" );
       return timerRunning;
     }
-  }
+  };
 
   vm.stopTimer = function() {
     if (timerRunning === false) {
@@ -54,7 +60,7 @@
       console.log('The Timer Has Been Stopped');
       return timerRunning;
     }
-  }
+  };
 
   vm.dataEvent = function(eventName, buttonId) {
     if (timerRunning === false) {
@@ -68,11 +74,17 @@
           "name": eventName,
           "time": eventTime
         }
-        $scope.instances.push(eventData);
+        $scope.sessionData.behaviorInstances.push(eventData);
       console.log(eventData);
     }
-  }
+  };
 
+  vm.saveSession = function() {
+    var info = $scope.sessionData;
+    timeFactory.saveSessionData(info, function(data) {
+    });
+    //$location.path('/viewdatasets');
+  };
 
  });
 }());

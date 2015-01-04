@@ -6,13 +6,13 @@
     var vm = this;
 
     $scope.codeSetData = {
-      codeSetId: "The First Ever",
-      description: "This code set has mands and elopment and other cool behavioral stuff",
+      codeSetId: "",
+      description: "",
       inputs: [
         {
           id: "input1",
-          name: "Mand",
-          color: "btn-primary"
+          name: "",
+          color: ""
         }
       ]
     };
