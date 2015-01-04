@@ -1,0 +1,28 @@
+<div ui-content-for="title">
+  <span>Start New Session</span>
+</div>
+
+<div class="scrollable">
+  <div class="scrollable-content">
+    <div class='section'>
+
+      <div class="section" ng-repeat="(codeSetId, codeSet) in viewCodeSet.codeSet">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <div class="btn-group pull-right">
+              <a class="btn btn-success" href="/#/codeset/{{codeSetId}}">Begin</a>
+          </div>
+          <h3 class="panel-title">{{codeSet.codeSetId}}</h3>
+        </div>
+        <div class="panel-body">
+          {{codeSet.description}}
+        </div>
+      </div>
+    </div>
+
+
+
+    </div>
+
+  </div>
+</div>

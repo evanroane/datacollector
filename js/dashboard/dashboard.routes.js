@@ -3,11 +3,11 @@
 
 angular.module('batApp')
   .config(function($routeProvider){
-    $routeProvider.when('/session',
+    $routeProvider.when('/newsession',
       {
-        templateUrl: 'views/dashboard/session.html',
-        controller: 'TimeController',
-        controllerAs: 'time',
+        templateUrl: 'views/dashboard/newsession.html',
+        controller: 'ShowCodeSetController',
+        controllerAs: 'viewCodeSet',
         reloadOnSearch: false
       }
     );

@@ -11,23 +11,8 @@
       <div class="panel panel-default">
         <div class="panel-heading">
           <div class="btn-group pull-right">
-
-            <a ui-turn-on='dropdown' class='btn'>
-              <i class="fa fa-chevron-circle-down fa-lg"></i>
-            </a>
-            <ul
-              class="dropdown-menu"
-              ui-outer-click="Ui.turnOff('dropdown')"
-              ui-outer-click-if="Ui.active('dropdown')"
-              role="menu"
-              ui-show="dropdown"
-              ui-state="dropdown"
-              ui-turn-off="dropdown">
-              <li><a href="/#/codeset/{{codeSetId}}">Begin Session with Code Set</a></li>
-              <li><a href="/#/codeset/{{codeSetId}}/edit">Edit Code Set</a></li>
-              <li class="divider"></li>
-              <li><a ng-click="viewCodeSet.removeCodeSet(codeSetId)">Delete Code Set</a></li>
-            </ul>
+            <a class="btn btn-warning" href="/#/codeset/{{codeSetId}}/edit">Edit</a>
+            <a class="btn btn-danger" ng-click="viewCodeSet.removeCodeSet(codeSetId)">Delete</a>
           </div>
           <h3 class="panel-title">{{codeSet.codeSetId}}</h3>
         </div>

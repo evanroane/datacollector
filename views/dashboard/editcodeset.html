@@ -5,7 +5,7 @@
 <div class="scrollable">
   <div class="scrollable-content section">
     <form role="form" name="createCodeSet" ng-submit='createNewCodeSet()' novalidate>
-      <legend>Create New Code Set</legend>
+      <legend>Edit Code Set</legend>
       <div>
         <label>
           Code Set Label:
@@ -33,11 +33,10 @@
           Add Another
         </a>
       </div>
-      <div id="inputsDisplay">
-        codeSet.codeSetData = {{ codeSet.codeSetData }}
-      </div>
     <hr>
-    <a class="btn btn-primary btn-block" ng-click="codeSet.addNewCodeSet()">Save Code Set</a>
+    <a class="btn btn-warning btn-block" href="/#/viewcodesets">Go Back</a>
+
+    <a class="btn btn-primary btn-block" ng-click="codeSet.addNewCodeSet()">Save Changes</a>
     </form>
   </div>
 </div>
