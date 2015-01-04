@@ -11,6 +11,14 @@ angular.module('batApp')
         reloadOnSearch: false
       }
     );
+    $routeProvider.when('/previoussessiondata',
+      {
+        templateUrl: 'views/dashboard/previoussessiondata.html',
+        controller: 'SessionDataController',
+        controllerAs: 'dataSet',
+        reloadOnSearch: false
+      }
+    );
     $routeProvider.when('/viewcodesets',
       {
         templateUrl: 'views/dashboard/viewcodesets.html',
