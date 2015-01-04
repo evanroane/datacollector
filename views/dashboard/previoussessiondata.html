@@ -8,17 +8,16 @@
       <div class="panel panel-default">
         <div class="panel-heading">
           <div class="btn-group pull-right">
-            <a class="btn btn-primary" href="">View</a>
+            <a class="btn" href="">Summary</a>
+            <a class="btn" href="/#/rawsessiondata/{{codeSetId}}">Raw Data</a>
+            <a class="btn" href="">Graph</a>
           </div>
           <h3 class="panel-title">{{codeSet.name}}, {{codeSetId}}</h3>
         </div>
         <div class="panel-body">
           Start Date: {{codeSet.startDate}}<br>
-          End Date: {{codeSet.endDate}}<br>
           Description: {{codeSet.description}}<br>
           Code Set: {{codeSet.codeSetName}}<br>
-          {{codeSet.behaviorInstances}}
-
         </div>
       </div>
     </div>
