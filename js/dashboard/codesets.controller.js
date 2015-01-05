@@ -10,7 +10,7 @@
       description: "",
       inputs: [
         {
-          id: "input1",
+          x: "1",
           name: "",
           color: ""
         }
@@ -18,15 +18,25 @@
     };
 
     $scope.addNewInput = function() {
-      var newInputNum = $scope.codeSetData.inputs.length+1;
+      var newInputNum = $scope.codeSetData.inputs.length + 1;
       $scope.codeSetData.inputs.push(
         {
-          "id": "input" + newInputNum,
+          "x": newInputNum,
           "name": "",
           "color": ""
         }
       );
     };
+
+    $scope.deleteInput = function(index) {
+      if ($scope.codeSetData.inputs.length > 1) {
+        $scope.codeSetData.inputs.splice(index, 1);
+      }
+      else {
+        console.log("you can't have less than one");
+      }
+
+  };
 
     vm.addNewCodeSet = function() {
       var inputs = $scope.codeSetData;

@@ -4,21 +4,25 @@
 
 <div class="scrollable">
   <div class="scrollable-content">
+
     <div class="section" ng-repeat="(codeSetId, codeSet) in dataSet.codeSet">
       <div class="panel panel-default">
         <div class="panel-heading">
-          <div class="btn-group pull-right">
-            <a ui-turn-on='myDropdown' class='btn'>
+
+
+          <div class="btn-group pull-right" ui-state="activeDropdown">
+            <a ui-set="{activeDropdown: codeSetId}"
+              ui-scope-context="codeSetId"
+              class='btn'>
               <i class="fa fa-chevron-circle-down"></i>
             </a>
             <ul
-            class="dropdown-menu"
-            ui-outer-click="Ui.turnOff('myDropdown')"
-            ui-outer-click-if="Ui.active('myDropdown')"
-            role="menu"
-            ui-show="myDropdown"
-            ui-state="myDropdown"
-            ui-turn-off="myDropdown">
+              class="dropdown-menu"
+              ui-outer-click="Ui.turnOff('activeDropdown')"
+              ui-outer-click-if="Ui.eq('activeDropdown', codeSetId)"
+              ui-scope-context="codeSetId"
+              ui-show="activeDropdown == codeSetId"
+              ui-turn-off="activeDropdown">
             <li>
               <a class="" href="/#/sessiondatasummary/{{codeSetId}}">
                 <i class="fa fa-file-o"></i>
@@ -53,9 +57,14 @@
           </ul>
         </div>
 
+
+
+
           <h3 class="panel-title">{{codeSet.name}}</h3>
         </div>
         <div class="panel-body">
+          {{codeSetId}}<br>
+          {{$index}}<br>
           Start Date: {{codeSet.startDate}}<br>
           Description: {{codeSet.description}}<br>
           Code Set: {{codeSet.codeSetName}}<br>
