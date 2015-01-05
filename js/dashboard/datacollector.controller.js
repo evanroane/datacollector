@@ -2,7 +2,7 @@
   'use strict';
 
   angular.module('batApp')
-  .controller('TimeController', function($scope, $routeParams, codeSetFactory, timeFactory){
+  .controller('TimeController', function($scope, $routeParams, $location, codeSetFactory, timeFactory){
   var vm = this;
   var id = $routeParams.id;
   var beginTime,
@@ -10,14 +10,8 @@
     timer;
   var timerRunning = !true;
 
-  $scope.sessionData = {
-    "startDate": "a",
-    "endDate": "b",
-    "name": "c",
-    "description": "d",
-    "codeSetName": "e",
-    "behaviorInstances": []
-  };
+  $scope.behaviorInstances = [];
+  $scope.sessionName = "";
 
   codeSetFactory.getCodeSet(id, function(data){
     vm.codeSetData = data;
@@ -74,16 +68,25 @@
           "name": eventName,
           "time": eventTime
         }
-        $scope.sessionData.behaviorInstances.push(eventData);
+        $scope.behaviorInstances.push(eventData);
       console.log(eventData);
     }
   };
 
-  vm.saveSession = function() {
-    var info = $scope.sessionData;
-    timeFactory.saveSessionData(info, function(data) {
+  vm.saveSession = function(codeSetId, desc) {
+    var behaviorInstances = $scope.behaviorInstances;
+    var name = $scope.sessionName;
+    var sessionRecord = {
+      "startDate": beginTime,
+      "endDate": endTime,
+      "name": name,
+      "description": desc,
+      "codeSetName": codeSetId,
+      "behaviorInstances": behaviorInstances
+    };
+    timeFactory.saveSessionData(sessionRecord, function(data) {
     });
-    //$location.path('/viewdatasets');
+    $location.path('/#/previoussessiondata');
   };
 
  });

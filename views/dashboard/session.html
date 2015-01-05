@@ -33,11 +33,14 @@
 				</div>
 
 		</div>
-
+<hr>
 		<div class="records"></div>
-			<a class="btn btn-block btn-danger" ng-click="time.saveSession()">Save Session</a>
 		<div class="section">
-
+			<label>Session Name:</label>
+			<input type="text" class="form-control" ng-model="sessionName">
+		</div>
+		<div class="section">
+			<a class="btn btn-block btn-danger" ng-click="time.saveSession(time.codeSetData.codeSetId, time.codeSetData.description)">Save Session</a>
 		</div>
 	</div>
 </div>

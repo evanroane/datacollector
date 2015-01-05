@@ -27,6 +27,22 @@ angular.module('batApp')
         reloadOnSearch: false
       }
     );
+    $routeProvider.when('/graphsessiondata/:id',
+      {
+        templateUrl: 'views/dashboard/graphsessiondata.html',
+        controller: 'SessionDataController',
+        controllerAs: 'dataSet',
+        reloadOnSearch: false
+      }
+    );
+    $routeProvider.when('/sessiondatasummary/:id',
+      {
+        templateUrl: 'views/dashboard/sessiondatasummary.html',
+        controller: 'SessionDataController',
+        controllerAs: 'dataSet',
+        reloadOnSearch: false
+      }
+    );
     $routeProvider.when('/viewcodesets',
       {
         templateUrl: 'views/dashboard/viewcodesets.html',
