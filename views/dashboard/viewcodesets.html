@@ -11,18 +11,20 @@
       <div class="panel panel-default">
         <div class="panel-heading">
 
-          <div class="btn-group pull-right">
-            <a ui-turn-on='myDropdown' class='btn'>
-              <i class="fa fa-chevron-circle-down"></i>
-            </a>
-            <ul
-            class="dropdown-menu"
-            ui-outer-click="Ui.turnOff('myDropdown')"
-            ui-outer-click-if="Ui.active('myDropdown')"
-            role="menu"
-            ui-show="myDropdown"
-            ui-state="myDropdown"
-            ui-turn-off="myDropdown">
+          <div class="btn-group pull-right" ui-state="activeDropdown">
+            <a ui-set="{activeDropdown: codeSetId}"
+            ui-scope-context="codeSetId"
+            class='btn'>
+            <i class="fa fa-chevron-circle-down"></i>
+          </a>
+          <ul
+          class="dropdown-menu"
+          ui-outer-click="Ui.turnOff('activeDropdown')"
+          ui-outer-click-if="Ui.eq('activeDropdown', codeSetId)"
+          ui-scope-context="codeSetId"
+          ui-show="activeDropdown == codeSetId"
+          ui-turn-off="activeDropdown">
+          
             <li>
               <a class="" href="/#/codeset/{{codeSetId}}/edit">
                 <i class="fa fa-pencil-square-o"></i>

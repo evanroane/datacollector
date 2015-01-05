@@ -2,8 +2,11 @@
   'use strict';
 
   angular.module('batApp')
-  .controller('CodeSetController', function($scope, $location, codeSetFactory) {
+  .controller('CodeSetController', function($scope, $location, codeSetFactory, SharedState) {
     var vm = this;
+
+    SharedState.initialize($scope, "activeDropdown");
+
 
     $scope.codeSetData = {
       codeSetId: "",
