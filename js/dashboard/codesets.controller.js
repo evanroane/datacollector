@@ -49,7 +49,7 @@
     };
   })
 
-  .controller('ShowCodeSetController', function($routeParams, codeSetFactory){
+  .controller('ShowCodeSetController', function($scope, $routeParams, codeSetFactory) {
     var vm = this;
     var id = $routeParams.id;
 
@@ -65,11 +65,11 @@
 
   })
 
-  .controller('EditCodeSetController', function($scope, $routeParams, codeSetFactory){
+  .controller('EditCodeSetController', function($scope, $routeParams, codeSetFactory) {
     var vm = this;
     var id = $routeParams.id;
 
-    codeSetFactory.getCodeSet(id, function(data){
+    codeSetFactory.getCodeSet(id, function(data) {
       vm.codeSetData = data;
     });
 

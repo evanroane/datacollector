@@ -43,11 +43,12 @@ angular.module('batApp')
         reloadOnSearch: false
       }
     );
-    $routeProvider.when('/viewcodesets',
+    $routeProvider.when('/managecodesets',
       {
-        templateUrl: 'views/dashboard/viewcodesets.html',
+        templateUrl: 'views/dashboard/managecodesets.html',
         controller: 'ShowCodeSetController',
-        controllerAs: 'viewCodeSet'
+        controllerAs: 'viewCodeSet',
+        reloadOnSearch: false
       }
     );
     $routeProvider.when('/newcodeset',
