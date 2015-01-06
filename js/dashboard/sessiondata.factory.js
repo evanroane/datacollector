@@ -24,6 +24,17 @@
       });
     }
 
+    function deleteSessionData(sessionDataId, cb){
+      $http.delete(_sessionUrl(sessionDataId))
+      .success(function(){
+        cb();
+        console.log('session data deleted')
+      })
+      .error(function(err){
+        console.log(err);
+      });
+    }
+
     // function editCodeSet(id, codeSetId){
     //   $http.put(_batUrl(id), codeSetId)
     //   .success(function(data){
@@ -33,20 +44,12 @@
     //     console.log(err);
     //   });
     // }
-    //
-    // function deleteCodeSet(codeSetId, cb){
-    //   $http.delete(_batUrl(codeSetId))
-    //   .success(function(){
-    //     cb();
-    //     console.log('code set deleted')
-    //   })
-    //   .error(function(err){
-    //     console.log(err);
-    //   });
-    // }
+
+
 
     return {
       getSessionData: getSessionData,
+      deleteSessionData: deleteSessionData
     };
   });
 }());

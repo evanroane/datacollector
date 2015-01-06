@@ -42,8 +42,8 @@
     vm.addNewCodeSet = function() {
       var inputs = $scope.codeSetData;
       codeSetFactory.createCodeSet(inputs, function(data) {
-      });
       $location.path('/managecodesets');
+      });
     };
   })
 

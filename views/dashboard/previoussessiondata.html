@@ -18,67 +18,62 @@
     </div>
 
 
-    <div class="section" ng-repeat="(codeSetId, codeSet) in dataSet.codeSet">
+    <div class="section" ng-repeat="(sessionDataId, sessionData) in dataSets.sessionData">
       <div class="panel panel-default">
         <div class="panel-heading">
 
-
           <div class="btn-group pull-right" ui-state="activeDropdown">
-            <a ui-set="{activeDropdown: codeSetId}"
-              ui-scope-context="codeSetId"
+            <a ui-set="{activeDropdown: sessionData}"
+              ui-scope-context="sessionData"
               class='btn'>
               <i class="fa fa-chevron-circle-down fa-lg"></i>
             </a>
             <ul
               class="dropdown-menu"
               ui-outer-click="Ui.turnOff('activeDropdown')"
-              ui-outer-click-if="Ui.eq('activeDropdown', codeSetId)"
-              ui-scope-context="codeSetId"
-              ui-show="activeDropdown == codeSetId"
+              ui-outer-click-if="Ui.eq('activeDropdown', sessionData)"
+              ui-scope-context="sessionData"
+              ui-show="activeDropdown == sessionData"
               ui-turn-off="activeDropdown">
             <li>
-              <a class="" href="/#/sessiondatasummary/{{codeSetId}}">
+              <a class="" href="/#/sessiondatasummary/{{sessionData}}">
                 <i class="fa fa-file-o"></i>
                 Summary
               </a>
             </li>
             <li>
-              <a class="" href="/#/rawsessiondata/{{codeSetId}}">
+              <a class="" href="/#/rawsessiondata/{{sessionData}}">
                 <i class="fa fa-archive"></i>
                 Raw Data
               </a>
             </li>
             <li>
-              <a class="" href="/#/graphsessiondata/{{codeSetId}}">
+              <a class="" href="/#/graphsessiondata/{{sessionData}}">
                 <i class="fa fa-line-chart"></i>
                 Graph
               </a>
             </li>
             <li class="divider"></li>
             <li>
-              <a href="">
+              <a ng-click="">
                 <i class="fa fa-pencil-square-o"></i>
                 Edit Data
               </a>
             </li>
             <li>
-              <a href="">
+              <a ng-click="dataSets.deleteDataSet(sessionDataId)">
                 <i class="fa fa-times-circle"></i>
                 Delete Data
               </a>
             </li>
           </ul>
         </div>
-
-
-
-
-          <h3 class="panel-title">{{codeSet.name}}</h3>
+          <h3 class="panel-title">{{sessionData.name}}</h3>
         </div>
         <div class="panel-body">
-          Start Date: {{codeSet.startDate}}<br>
-          Description: {{codeSet.description}}<br>
-          Code Set: {{codeSet.codeSetName}}<br>
+          Start Date: {{sessionData.startDate}}<br>
+          Description: {{sessionData.description}}<br>
+          Code Set: {{sessionData.codeSetName}}<br>
         </div>
       </div>
     </div>

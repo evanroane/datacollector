@@ -98,8 +98,9 @@
         "behaviorInstances": behaviorInstances
       };
       timeFactory.saveSessionData(sessionRecord, function(data) {
+        $location.path('/previoussessiondata');
       });
-      $location.path('/previoussessiondata');
+
     } else {
       console.log("only when the timer is not running")
     }

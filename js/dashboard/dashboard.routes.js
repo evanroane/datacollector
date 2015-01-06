@@ -15,7 +15,7 @@ angular.module('batApp')
       {
         templateUrl: 'views/dashboard/previoussessiondata.html',
         controller: 'SessionDataController',
-        controllerAs: 'dataSet',
+        controllerAs: 'dataSets',
         reloadOnSearch: false
       }
     );
