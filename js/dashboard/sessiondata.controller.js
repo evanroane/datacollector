@@ -16,7 +16,21 @@
       sessionDataFactory.deleteSessionData(sessionDataId, function() {
         delete vm.sessionData[sessionDataId];
       });
-    };    
+    };
+
+  })
+
+  .controller('EditSessionDataController', function($scope, $routeParams, sessionDataFactory){
+    var vm = this;
+    var id = $routeParams.id;
+
+    sessionDataFactory.getSessionData(id, function(data){
+      vm.sessionData = data;
+    });
+
+    vm.addDataSet = function() {
+      sessionDataFactory.editSessionData(id, vm.sessionData);
+    };
 
   });
 }());

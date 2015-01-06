@@ -35,21 +35,20 @@
       });
     }
 
-    // function editCodeSet(id, codeSetId){
-    //   $http.put(_batUrl(id), codeSetId)
-    //   .success(function(data){
-    //     $location.path('/viewcodesets');
-    //   })
-    //   .error(function(err){
-    //     console.log(err);
-    //   });
-    // }
-
-
+    function editSessionData(id, sessionDataId){
+      $http.put(_sessionUrl(id), sessionDataId)
+      .success(function(data){
+        $location.path('/previoussessiondata');
+      })
+      .error(function(err){
+        console.log(err);
+      });
+    }
 
     return {
       getSessionData: getSessionData,
-      deleteSessionData: deleteSessionData
+      deleteSessionData: deleteSessionData,
+      editSessionData: editSessionData
     };
   });
 }());
