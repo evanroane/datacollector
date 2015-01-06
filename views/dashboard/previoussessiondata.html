@@ -23,39 +23,39 @@
         <div class="panel-heading">
 
           <div class="btn-group pull-right" ui-state="activeDropdown">
-            <a ui-set="{activeDropdown: sessionData}"
-              ui-scope-context="sessionData"
+            <a ui-set="{activeDropdown: sessionDataId}"
+              ui-scope-context="sessionDataId"
               class='btn'>
               <i class="fa fa-chevron-circle-down fa-lg"></i>
             </a>
             <ul
               class="dropdown-menu"
               ui-outer-click="Ui.turnOff('activeDropdown')"
-              ui-outer-click-if="Ui.eq('activeDropdown', sessionData)"
-              ui-scope-context="sessionData"
-              ui-show="activeDropdown == sessionData"
+              ui-outer-click-if="Ui.eq('activeDropdown', sessionDataId)"
+              ui-scope-context="sessionDataId"
+              ui-show="activeDropdown == sessionDataId"
               ui-turn-off="activeDropdown">
             <li>
-              <a class="" href="/#/sessiondatasummary/{{sessionData}}">
+              <a class="" href="/#/sessiondatasummary/{{sessionDataId}}">
                 <i class="fa fa-file-o"></i>
                 Summary
               </a>
             </li>
             <li>
-              <a class="" href="/#/rawsessiondata/{{sessionData}}">
+              <a class="" href="/#/rawsessiondata/{{sessionDataId}}">
                 <i class="fa fa-archive"></i>
                 Raw Data
               </a>
             </li>
             <li>
-              <a class="" href="/#/graphsessiondata/{{sessionData}}">
+              <a class="" href="/#/graphsessiondata/{{sessionDataId}}">
                 <i class="fa fa-line-chart"></i>
                 Graph
               </a>
             </li>
             <li class="divider"></li>
             <li>
-              <a ng-click="">
+              <a class="" href="/#/sessiondata/{{sessionDataId}}/edit">
                 <i class="fa fa-pencil-square-o"></i>
                 Edit Data
               </a>

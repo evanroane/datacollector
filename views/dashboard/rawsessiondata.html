@@ -13,14 +13,14 @@
               Back
             </a>
           </div>
-          <h3 class="panel-title">{{dataSet.codeSet.name}}</h3>
+          <h3 class="panel-title">{{dataSet.sessionData.name}}</h3>
         </div>
         <div class="panel-body">
-          Code Set: {{dataSet.codeSet.codeSetName}}<br>
-          Description: {{dataSet.codeSet.description}}<br>
-          Start Date: {{dataSet.codeSet.startDate}}<br>
-          End Date: {{dataSet.codeSet.endDate}}<br>
-          <div ng-repeat="instance in dataSet.codeSet.behaviorInstances">
+          Code Set: {{dataSet.sessionData.codeSetName}}<br>
+          Description: {{dataSet.sessionData.description}}<br>
+          Start Date: {{dataSet.sessionData.startDate}}<br>
+          End Date: {{dataSet.sessionData.endDate}}<br>
+          <div ng-repeat="instance in dataSet.sessionData.behaviorInstances">
             <hr>
           {{instance.name}} |
           {{instance.id}} |

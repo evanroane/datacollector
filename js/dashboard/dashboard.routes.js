@@ -75,5 +75,14 @@ angular.module('batApp')
         reloadOnSearch: false
       }
     );
+    $routeProvider.when('/sessiondata/:id/edit',
+      {
+        templateUrl: 'views/dashboard/editsessiondata.html',
+        controller: 'EditSessionDataController',
+        controllerAs: 'edit',
+        reloadOnSearch: false
+      }
+    );
+
   })
 }());
