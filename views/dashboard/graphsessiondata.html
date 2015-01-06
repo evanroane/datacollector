@@ -8,11 +8,19 @@
       <div class="panel panel-default">
         <div class="panel-heading">
           <div class="btn-group pull-right">
-            <a class="btn btn-primary" href="/#/previoussessiondata">Back</a>
+            <a class="btn btn-default" href="/#/previoussessiondata">
+              <i class="fa fa-chevron-left"></i>
+              Back
+            </a>
           </div>
           <h3 class="panel-title">{{dataSet.codeSet.name}}</h3>
         </div>
         <div class="panel-body">
+          <div>
+            <linechart data="data" options="options" mode="" width="" height=""></linechart>
+          </div>
+
+
           Start Date: {{dataSet.codeSet.startDate}}<br>
           End Date: {{dataSet.codeSet.endDate}}<br>
           Description: {{dataSet.codeSet.description}}<br>

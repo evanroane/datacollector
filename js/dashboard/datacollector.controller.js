@@ -1,8 +1,8 @@
-;(function(){
+;(function() {
   'use strict';
 
   angular.module('batApp')
-  .controller('TimeController', function($scope, $routeParams, $location, codeSetFactory, timeFactory){
+  .controller('TimeController', function($scope, $routeParams, $location, codeSetFactory, timeFactory) {
   var vm = this;
   var id = $routeParams.id;
   var beginTime,
@@ -11,6 +11,7 @@
   var timerRunning = !true;
 
   $scope.behaviorInstances = [];
+  $scope.dataEventCounter = 0;
   $scope.sessionName = "";
 
   codeSetFactory.getCodeSet(id, function(data){
@@ -63,12 +64,14 @@
         var now = new Date();
         var eventTime = Math.floor((now - beginTime) / 1000);
         $( '.records' ).append( eventName + ': ' + eventTime + '<br>' );
+        var dataEventCounter = $scope.dataEventCounter;
         var eventData = {
-          "id": buttonId,
+          "x": dataEventCounter + 1,
           "name": eventName,
           "time": eventTime
         }
         $scope.behaviorInstances.push(eventData);
+        $scope.dataEventCounter++;
       console.log(eventData);
     }
   };
@@ -86,7 +89,7 @@
     };
     timeFactory.saveSessionData(sessionRecord, function(data) {
     });
-    $location.path('/#/previoussessiondata');
+    $location.path('/previoussessiondata');
   };
 
  });

@@ -13,7 +13,6 @@
       description: "",
       inputs: [
         {
-          x: "1",
           name: "",
           color: ""
         }
@@ -24,7 +23,6 @@
       var newInputNum = $scope.codeSetData.inputs.length + 1;
       $scope.codeSetData.inputs.push(
         {
-          "x": newInputNum,
           "name": "",
           "color": ""
         }
