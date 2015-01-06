@@ -72,7 +72,6 @@
       } else {
         var now = new Date();
         var eventTime = Math.floor((now - beginTime) / 1000);
-        $( '.records' ).append( eventName + ': ' + eventTime + '<br>' );
         var dataEventCounter = $scope.dataEventCounter;
         var eventData = {
           "x": dataEventCounter + 1,

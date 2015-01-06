@@ -43,7 +43,7 @@
       var inputs = $scope.codeSetData;
       codeSetFactory.createCodeSet(inputs, function(data) {
       });
-      $location.path('/viewcodesets');
+      $location.path('/managecodesets');
     };
   })
 

@@ -16,8 +16,6 @@
 
     <div class="section">
       <form role="form" name="createCodeSet" ng-submit='createNewCodeSet()' novalidate>
-
-
         <div>
           <label>
             Code Set Label:
@@ -40,6 +38,9 @@
             <option value="btn-success">Green</option>
             <option value="btn-danger">Red</option>
           </select>
+          <a class="btn btn-danger" ng-click="deleteInput()">
+            Delete
+          </a>
           <br>
           <a class="btn btn-primary" ng-show="$last" ng-click="codeSet.addNewInput()">
             Add Another
