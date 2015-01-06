@@ -12,7 +12,8 @@
 
   $scope.behaviorInstances = [];
   $scope.dataEventCounter = 0;
-  $scope.sessionName = "";
+  $scope.sessionLabel = "";
+  $scope.sessionDesc = "";
 
   codeSetFactory.getCodeSet(id, function(data){
     vm.codeSetData = data;
@@ -57,6 +58,14 @@
     }
   };
 
+  vm.goBack = function() {
+    if (timerRunning === false) {
+      $location.path('/newsession');
+    } else {
+      console.log("not while the timer is running");
+    }
+  };
+
   vm.dataEvent = function(eventName, buttonId) {
     if (timerRunning === false) {
       console.log("Not going to happen");
@@ -72,24 +81,29 @@
         }
         $scope.behaviorInstances.push(eventData);
         $scope.dataEventCounter++;
-      console.log(eventData);
+        console.log(eventData);
     }
   };
 
   vm.saveSession = function(codeSetId, desc) {
-    var behaviorInstances = $scope.behaviorInstances;
-    var name = $scope.sessionName;
-    var sessionRecord = {
-      "startDate": beginTime,
-      "endDate": endTime,
-      "name": name,
-      "description": desc,
-      "codeSetName": codeSetId,
-      "behaviorInstances": behaviorInstances
-    };
-    timeFactory.saveSessionData(sessionRecord, function(data) {
-    });
-    $location.path('/previoussessiondata');
+    if (timerRunning === false) {
+      var behaviorInstances = $scope.behaviorInstances;
+      var name = $scope.sessionLabel;
+      var desc = $scope.sessionDesc;
+      var sessionRecord = {
+        "startDate": beginTime,
+        "endDate": endTime,
+        "name": name,
+        "description": desc,
+        "codeSetName": codeSetId,
+        "behaviorInstances": behaviorInstances
+      };
+      timeFactory.saveSessionData(sessionRecord, function(data) {
+      });
+      $location.path('/previoussessiondata');
+    } else {
+      console.log("only when the timer is not running")
+    }
   };
 
  });
