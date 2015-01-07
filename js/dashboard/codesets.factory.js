@@ -48,7 +48,7 @@
     function editCodeSet(id, codeSetId){
       $http.put(_batUrl(id), codeSetId)
       .success(function(data){
-        $location.path('/viewcodesets');
+        $location.path('/managecodesets');
       })
       .error(function(err){
         console.log(err);

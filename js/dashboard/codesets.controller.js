@@ -69,13 +69,14 @@
 
     codeSetFactory.getCodeSet(id, function(data) {
       vm.codeSetData = data;
+      $scope.codeSetData = vm.codeSetData;
     });
 
     vm.addNewCodeSet = function() {
-      codeSetFactory.editCodeSet(id, vm.codeSetData);
+      codeSetFactory.editCodeSet(id, $scope.codeSetData);
     };
 
-    vm.addNewInput = function() {
+    $scope.addNewInput = function() {
       var newInputNum = vm.codeSetData.inputs.length+1;
       vm.codeSetData.inputs.push(
         {
@@ -85,6 +86,17 @@
         }
       );
     };
+
+    $scope.deleteInput = function(index) {
+      if (vm.codeSetData.inputs.length > 1) {
+        vm.codeSetData.inputs.splice(index, 1);
+      }
+      else {
+        console.log("you can't have less than one");
+      }
+
+    };
+
   })
 
 }());
