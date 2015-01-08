@@ -68,10 +68,15 @@
             </li>
           </ul>
         </div>
-          <h3 class="panel-title">{{sessionData.name}}</h3>
+          <h3 class="panel-title">
+            <strong>Name:</strong>
+            <i class="fa fa-angle-double-left"></i>
+            {{sessionData.name}}
+            <i class="fa fa-angle-double-right"></i>
+            </h3>
         </div>
         <div class="panel-body">
-          Start Date: {{sessionData.startDate}}<br>
+          Date: {{startDate}}<br>
           Description: {{sessionData.description}}<br>
           Code Set: {{sessionData.codeSetName}}<br>
         </div>

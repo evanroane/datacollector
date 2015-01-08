@@ -10,10 +10,12 @@
 
     sessionDataFactory.getSessionData(id, function(data){
       vm.sessionData = data;
-      $scope.startDate = vm.sessionData.startDate;
-      var instances = vm.sessionData.behaviorInstances;
-      console.log(instances);
-      return instances;
+      $scope.startDate = moment(vm.sessionData.startDate)
+        .format("dddd, MMMM Do YYYY, h:mm:ss a");
+      $scope.endDate = moment(vm.sessionData.endDate)
+        .format("dddd, MMMM Do YYYY, h:mm:ss a");
+      $scope.instances = vm.sessionData.behaviorInstances;
+      console.log($scope.instances);
     });
 
   })
