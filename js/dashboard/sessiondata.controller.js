@@ -5,18 +5,27 @@
   .controller('SessionDataController', function($scope, $routeParams, sessionDataFactory, SharedState){
     var vm = this;
     var id = $routeParams.id;
+    var instances;
 
     SharedState.initialize($scope, "activeDropdown");
 
     sessionDataFactory.getSessionData(id, function(data){
       vm.sessionData = data;
+      var instances = vm.sessionData.behaviorInstances;
+      console.log(instances);
+      return instances;
     });
+
+
+
 
     vm.deleteDataSet = function(sessionDataId) {
       sessionDataFactory.deleteSessionData(sessionDataId, function() {
         delete vm.sessionData[sessionDataId];
       });
     };
+
+
 
   })
 

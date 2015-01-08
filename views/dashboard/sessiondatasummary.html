@@ -20,6 +20,8 @@
           End Date: {{dataSet.sessionData.endDate}}<br>
           Description: {{dataSet.sessionData.description}}<br>
           Code Set: {{dataSet.sessionData.codeSetName}}<br>
+          Instance Array: {{dataSet.sessionData.behaviorInstances}}
+
           <div ng-repeat="instance in dataSet.sessionData.behaviorInstances">
             <hr>
           {{instance.name}} |

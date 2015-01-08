@@ -15,6 +15,12 @@
   $scope.sessionLabel = "";
   $scope.sessionDesc = "";
 
+  // $scope.$on('$locationChangeStart', function(event) {
+  //   if (timerRunning === true) {
+  //     event.preventDefault(); //stay on current page
+  //     }
+  // });
+
   codeSetFactory.getCodeSet(id, function(data){
     vm.codeSetData = data;
   });
