@@ -22,7 +22,7 @@ angular.module('batApp')
     $routeProvider.when('/rawsessiondata/:id',
       {
         templateUrl: 'views/dashboard/rawsessiondata.html',
-        controller: 'SessionDataController',
+        controller: 'AnalyzeDataController',
         controllerAs: 'dataSet',
         reloadOnSearch: false
       }
@@ -30,7 +30,7 @@ angular.module('batApp')
     $routeProvider.when('/graphsessiondata/:id',
       {
         templateUrl: 'views/dashboard/graphsessiondata.html',
-        controller: 'SessionDataController',
+        controller: 'AnalyzeDataController',
         controllerAs: 'dataSet',
         reloadOnSearch: false
       }
@@ -38,7 +38,7 @@ angular.module('batApp')
     $routeProvider.when('/sessiondatasummary/:id',
       {
         templateUrl: 'views/dashboard/sessiondatasummary.html',
-        controller: 'SessionDataController',
+        controller: 'AnalyzeDataController',
         controllerAs: 'dataSet',
         reloadOnSearch: false
       }

@@ -8,16 +8,18 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimal-ui" />
     <meta name="apple-mobile-web-app-status-bar-style" content="yes" />
-    <link rel="shortcut icon" href="/favicon.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="/baticon.png" type="image/x-icon" />
     <link rel="stylesheet" href="bower_components/mobile-angular-ui/dist/css/mobile-angular-ui-hover.css" />
     <link rel="stylesheet" href="bower_components/mobile-angular-ui/dist/css/mobile-angular-ui-base.css" />
     <link rel="stylesheet" href="bower_components/mobile-angular-ui/dist/css/mobile-angular-ui-desktop.css" />
-    <link rel="stylesheet" href="demo.css" />
+    <link rel="stylesheet" href="css/custom.css" />
     <link rel="stylesheet" href="css/session.css" />
   </head>
   <body ng-app="batApp" ng-controller="MainController">
-    <div ng-include="'sidebar.html'" ui-track-as-search-param='true'class="sidebar sidebar-left"></div>
+    <div ng-include="'sidebar.html'" ui-track-as-search-param='true' class="sidebar sidebar-left"></div>
+
     <div class="app">
+
       <div class="navbar navbar-app navbar-absolute-top">
         <div class="navbar-brand navbar-brand-center" ui-yield-to="title">
           B.A.T.
@@ -29,8 +31,6 @@
         </div>
       </div>
 
-
-      <!-- App Body -->
       <div class="app-body" ng-class="{loading: loading}">
         <div ng-show="loading" class="app-content-loading">
           <i class="fa fa-circle-o-notch fa-spin loading-spinner"></i>
@@ -39,15 +39,17 @@
           <ng-view></ng-view>
         </div>
       </div>
+
     </div>
+
     <div ui-yield-to="modals"></div>
 
-    <!--Scripts:-->
     <script src="bower_components/firebase/firebase.js"></script>
     <script src="bower_components/angular/angular.min.js"></script>
     <script src="bower_components/angular-route/angular-route.min.js"></script>
     <script src="bower_components/mobile-angular-ui/dist/js/mobile-angular-ui.min.js"></script>
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script scr="bower_components/lodash/dist/lodash.min.js"></script>
     <script src="bower_components/moment/moment.js"></script>
     <script src="bower_components/d3/d3.min.js"></script>
     <script src="bower_components/n3-line-chart/dist/line-chart.min.js"></script>
@@ -66,5 +68,6 @@
     <script src="js/dashboard/codesets.controller.js"></script>
     <script src="js/dashboard/sessiondata.factory.js"></script>
     <script src="js/dashboard/sessiondata.controller.js"></script>
+    <script src="js/dashboard/analyzedata.controller.js"></script>
   </body>
 </html>
