@@ -5,7 +5,7 @@
   .controller('TimeController', function($scope, $routeParams, $location, codeSetFactory, timeFactory) {
   var vm = this;
   var id = $routeParams.id;
-  var beginTime,
+  var startTime,
     endTime,
     timer;
   var timerRunning = !true;
@@ -26,7 +26,7 @@
   });
 
   vm.displayTimer = function() {
-    var secondsSinceBegin = moment.duration(Date.now() - beginTime).asSeconds();
+    var secondsSinceBegin = moment.duration(Date.now() - startTime).asSeconds();
     var formatAsTimer = moment()
     .hour(0)
     .minute(0)
@@ -41,10 +41,10 @@
     if (timerRunning === true) {
       console.log("Timer is already started");
     } else {
-      beginTime = new Date();
+      startTime = Date.now();
       timer = setInterval(function() {vm.displayTimer() }, 1000);
       timerRunning = true;
-      var startFullDate = moment(beginTime).format('MMMM Do YYYY, h:mm:ss a');
+      var startFullDate = moment(startTime).format('MMMM Do YYYY, h:mm:ss a');
       $( '.records' ).append('Started: ' + startFullDate + "<br>" );
       return timerRunning;
     }
@@ -54,7 +54,7 @@
     if (timerRunning === false) {
       console.log("You can't stop a timer that isn't running");
     } else {
-      endTime = new Date();
+      endTime = Date.now();
       timerRunning = false;
       var endFullDate = moment(endTime).format('MMMM Do YYYY, h:mm:ss a');
       $( '.records' ).append( 'Ended: ' + endFullDate + '<br>' );
@@ -64,20 +64,12 @@
     }
   };
 
-  vm.goBack = function() {
-    if (timerRunning === false) {
-      $location.path('/newsession');
-    } else {
-      console.log("not while the timer is running");
-    }
-  };
-
   vm.dataEvent = function(eventName, buttonId) {
     if (timerRunning === false) {
       console.log("Not going to happen");
       } else {
         var now = new Date();
-        var eventTime = Math.floor((now - beginTime) / 1000);
+        var eventTime = Math.floor((now - startTime) / 1000);
         var dataEventCounter = $scope.dataEventCounter;
         var eventData = {
           "x": dataEventCounter + 1,
@@ -96,7 +88,7 @@
       var name = $scope.sessionLabel;
       var desc = $scope.sessionDesc;
       var sessionRecord = {
-        "startDate": beginTime,
+        "startDate": startTime,
         "endDate": endTime,
         "name": name,
         "description": desc,
