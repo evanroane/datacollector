@@ -8,6 +8,11 @@
     var instances;
 
 
+    //var sd = [];
+    //_.where(sd, {name: "i_mand"});
+    //var qq = _.where(sd, {name: "i_mand"});
+    //qq.length
+
     sessionDataFactory.getSessionData(id, function(data){
       vm.sessionData = data;
       $scope.startDate = moment(vm.sessionData.startDate)
