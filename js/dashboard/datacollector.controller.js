@@ -3,13 +3,16 @@
 
   angular.module('batApp')
   .controller('TimeController', function($scope, $routeParams, $location, codeSetFactory, timeFactory) {
+
   var vm = this;
   var id = $routeParams.id;
   var startTime,
     endTime,
-    timer;
+    timer,
+    inputNames;
   var timerRunning = !true;
 
+  $scope.summaryArray = [];
   $scope.behaviorInstances = [];
   $scope.dataEventCounter = 0;
   $scope.sessionLabel = "";
@@ -17,6 +20,7 @@
 
   codeSetFactory.getCodeSet(id, function(data){
     vm.codeSetData = data;
+    $scope.inputs = vm.codeSetData.inputs
   });
 
   vm.displayTimer = function() {
@@ -75,18 +79,45 @@
     }
   };
 
+  vm.makeSessionSummary = function() {
+    vm.getInputNames();
+    vm.runSummaryLoop();
+  };
+
+  vm.getInputNames = function() {
+    var inputs = $scope.inputs;
+    inputNames = _.map(inputs, _.iteratee("name"));
+  };
+
+  vm.logArrayElements = function(element, index, array) {
+    var name = element;
+    var frequency = _.where($scope.behaviorInstances, {"name": element}).length;
+    var summaryItem = {
+      "name": element,
+      "frequency": frequency
+    };
+    $scope.summaryArray.push(summaryItem);
+  };
+
+  vm.runSummaryLoop = function() {
+    inputNames.forEach(vm.logArrayElements);
+  };
+
   vm.saveSession = function(codeSetId, desc) {
     if (timerRunning === false) {
+      vm.makeSessionSummary();
       var behaviorInstances = $scope.behaviorInstances;
       var name = $scope.sessionLabel;
       var desc = $scope.sessionDesc;
+      var summaryArray = $scope.summaryArray;
       var sessionRecord = {
         "startDate": startTime,
         "endDate": endTime,
         "name": name,
         "description": desc,
         "codeSetName": codeSetId,
-        "behaviorInstances": behaviorInstances
+        "behaviorInstances": behaviorInstances,
+        "summary": summaryArray
       };
       timeFactory.saveSessionData(sessionRecord, function(data) {
         $location.path('/previoussessiondata');
