@@ -3,26 +3,24 @@
 
   angular.module('batApp')
   .controller('TimeController', function($scope, $routeParams, $location, codeSetFactory, timeFactory) {
+
   var vm = this;
   var id = $routeParams.id;
   var startTime,
     endTime,
-    timer;
+    timer,
+    inputNames;
   var timerRunning = !true;
 
+  $scope.summaryArray = [];
   $scope.behaviorInstances = [];
   $scope.dataEventCounter = 0;
   $scope.sessionLabel = "";
   $scope.sessionDesc = "";
 
-  // $scope.$on('$locationChangeStart', function(event) {
-  //   if (timerRunning === true) {
-  //     event.preventDefault(); //stay on current page
-  //     }
-  // });
-
   codeSetFactory.getCodeSet(id, function(data){
     vm.codeSetData = data;
+    $scope.inputs = vm.codeSetData.inputs
   });
 
   vm.displayTimer = function() {
@@ -33,8 +31,6 @@
     .second(secondsSinceBegin)
     .format('HH:mm:ss');
     document.getElementById('time-container').innerHTML = formatAsTimer;
-    // setTimeout(function() {timerRunning && timer()}, 1000)
-    console.log(formatAsTimer);
   };
 
   vm.startTimer = function() {
@@ -44,8 +40,6 @@
       startTime = Date.now();
       timer = setInterval(function() {vm.displayTimer() }, 1000);
       timerRunning = true;
-      var startFullDate = moment(startTime).format('MMMM Do YYYY, h:mm:ss a');
-      $( '.records' ).append('Started: ' + startFullDate + "<br>" );
       return timerRunning;
     }
   };
@@ -56,8 +50,6 @@
     } else {
       endTime = Date.now();
       timerRunning = false;
-      var endFullDate = moment(endTime).format('MMMM Do YYYY, h:mm:ss a');
-      $( '.records' ).append( 'Ended: ' + endFullDate + '<br>' );
       clearInterval(timer);
       console.log('The Timer Has Been Stopped');
       return timerRunning;
@@ -82,23 +74,56 @@
     }
   };
 
+  vm.makeSessionSummary = function() {
+    vm.getInputNames();
+    vm.runSummaryLoop();
+  };
+
+  vm.getInputNames = function() {
+    var inputs = $scope.inputs;
+    inputNames = _.map(inputs, _.iteratee("name"));
+  };
+
+  vm.round = function(value, decimals) {
+    return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
+  }
+
+  vm.logArrayElements = function(element, index, array) {
+    var name = element;
+    var frequency = _.where($scope.behaviorInstances, {"name": element}).length;
+    var duration = endTime - startTime;
+    var rpm = vm.round((frequency / duration) * 60, 2);
+    var summaryItem = {
+      "name": element,
+      "frequency": frequency,
+      "rpm": rpm
+    };
+    $scope.summaryArray.push(summaryItem);
+  };
+
+  vm.runSummaryLoop = function() {
+    inputNames.forEach(vm.logArrayElements);
+  };
+
   vm.saveSession = function(codeSetId, desc) {
     if (timerRunning === false) {
+      vm.makeSessionSummary();
       var behaviorInstances = $scope.behaviorInstances;
       var name = $scope.sessionLabel;
       var desc = $scope.sessionDesc;
+      var summaryArray = $scope.summaryArray;
       var sessionRecord = {
         "startDate": startTime,
         "endDate": endTime,
         "name": name,
         "description": desc,
         "codeSetName": codeSetId,
-        "behaviorInstances": behaviorInstances
+        "behaviorInstances": behaviorInstances,
+        "summary": summaryArray
       };
       timeFactory.saveSessionData(sessionRecord, function(data) {
         $location.path('/previoussessiondata');
       });
-
     } else {
       console.log("only when the timer is not running")
     }

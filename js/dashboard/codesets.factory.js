@@ -25,7 +25,7 @@
       });
     }
 
-    function getCodeSet(id, cb){
+    function getCodeSet(id, cb) {
       $http.get(_batUrl(id))
       .success(function(data){
         cb(data);
@@ -35,7 +35,7 @@
       });
     }
 
-    function getAllCodeSets(cb){
+    function getAllCodeSets(cb) {
       $http.get(_batUrl())
       .success(function(data){
         cb(data);
@@ -70,7 +70,8 @@
       createCodeSet: createCodeSet,
       getCodeSet: getCodeSet,
       editCodeSet: editCodeSet,
-      deleteCodeSet: deleteCodeSet
+      deleteCodeSet: deleteCodeSet,
+      getAllCodeSets: getAllCodeSets
     };
 
   })

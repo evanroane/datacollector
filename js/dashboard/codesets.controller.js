@@ -51,7 +51,7 @@
     var vm = this;
     var id = $routeParams.id;
 
-    codeSetFactory.getCodeSet(id, function(data){
+    codeSetFactory.getAllCodeSets(function(data){
       vm.codeSet = data;
     });
 
