@@ -41,8 +41,6 @@
       startTime = Date.now();
       timer = setInterval(function() {vm.displayTimer() }, 1000);
       timerRunning = true;
-      var startFullDate = moment(startTime).format('MMMM Do YYYY, h:mm:ss a');
-      $( '.records' ).append('Started: ' + startFullDate + "<br>" );
       return timerRunning;
     }
   };
@@ -53,8 +51,6 @@
     } else {
       endTime = Date.now();
       timerRunning = false;
-      var endFullDate = moment(endTime).format('MMMM Do YYYY, h:mm:ss a');
-      $( '.records' ).append( 'Ended: ' + endFullDate + '<br>' );
       clearInterval(timer);
       console.log('The Timer Has Been Stopped');
       return timerRunning;
@@ -92,9 +88,12 @@
   vm.logArrayElements = function(element, index, array) {
     var name = element;
     var frequency = _.where($scope.behaviorInstances, {"name": element}).length;
+    var duration = endTime - startTime;
+    var rpm = (frequency / duration) * 60;
     var summaryItem = {
       "name": element,
-      "frequency": frequency
+      "frequency": frequency,
+      "rpm": rpm
     };
     $scope.summaryArray.push(summaryItem);
   };
