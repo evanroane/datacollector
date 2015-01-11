@@ -85,11 +85,15 @@
     inputNames = _.map(inputs, _.iteratee("name"));
   };
 
+  vm.round = function(value, decimals) {
+    return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
+  }
+
   vm.logArrayElements = function(element, index, array) {
     var name = element;
     var frequency = _.where($scope.behaviorInstances, {"name": element}).length;
     var duration = endTime - startTime;
-    var rpm = (frequency / duration) * 60;
+    var rpm = vm.round((frequency / duration) * 60, 2);
     var summaryItem = {
       "name": element,
       "frequency": frequency,
