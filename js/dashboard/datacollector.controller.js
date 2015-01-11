@@ -31,7 +31,6 @@
     .second(secondsSinceBegin)
     .format('HH:mm:ss');
     document.getElementById('time-container').innerHTML = formatAsTimer;
-    console.log(formatAsTimer);
   };
 
   vm.startTimer = function() {
@@ -125,7 +124,6 @@
       timeFactory.saveSessionData(sessionRecord, function(data) {
         $location.path('/previoussessiondata');
       });
-
     } else {
       console.log("only when the timer is not running")
     }

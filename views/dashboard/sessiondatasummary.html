@@ -48,9 +48,9 @@
                 <th>Responses per Minute:</th>
               </tr>
               <tr ng-repeat="behavior in dataSet.sessionData.summary">
-                <th>{{behavior.name}}</th>
+                <td>{{behavior.name}}</td>
                 <td>{{behavior.frequency}}</td>
-                <td>P</td>
+                <td>{{behavior.rpm}}</td>
               </tr>
             </table>
           </div>
