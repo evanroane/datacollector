@@ -15,12 +15,6 @@
   $scope.sessionLabel = "";
   $scope.sessionDesc = "";
 
-  // $scope.$on('$locationChangeStart', function(event) {
-  //   if (timerRunning === true) {
-  //     event.preventDefault(); //stay on current page
-  //     }
-  // });
-
   codeSetFactory.getCodeSet(id, function(data){
     vm.codeSetData = data;
   });
@@ -33,7 +27,6 @@
     .second(secondsSinceBegin)
     .format('HH:mm:ss');
     document.getElementById('time-container').innerHTML = formatAsTimer;
-    // setTimeout(function() {timerRunning && timer()}, 1000)
     console.log(formatAsTimer);
   };
 
