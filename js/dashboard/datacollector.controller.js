@@ -30,7 +30,9 @@
     .minute(0)
     .second(secondsSinceBegin)
     .format('HH:mm:ss');
-    document.getElementById('time-container').innerHTML = formatAsTimer;
+    var timerContainer = document.getElementById("time-container");
+    timerContainer.removeChild(timerContainer.firstChild);
+    timerContainer.appendChild(document.createTextNode(formatAsTimer));
   };
 
   vm.startTimer = function() {
