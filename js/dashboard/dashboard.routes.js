@@ -27,9 +27,9 @@ angular.module('batApp')
         reloadOnSearch: false
       }
     );
-    $routeProvider.when('/graphsessiondata/:id',
+    $routeProvider.when('/download/:id',
       {
-        templateUrl: 'views/dashboard/graphsessiondata.html',
+        templateUrl: 'views/dashboard/download.html',
         controller: 'AnalyzeDataController',
         controllerAs: 'dataSet',
         reloadOnSearch: false
