@@ -28,13 +28,13 @@ var sessionData = {
 
 // FUNCTIONS:
 
-$(document).ready(function(){
-  $("button").click(function(){
-    var summary = sessionData.summary;
-    var instances = sessionData.behaviorInstances;
-    csvMaker(summary, instances);
-    });
-  });
+// $(document).ready(function(){
+//   $("button").click(function(){
+//     var summary = sessionData.summary;
+//     var instances = sessionData.behaviorInstances;
+//     csvMaker(summary, instances);
+//     });
+//   });
 
   function csvMaker(s, d) {
     //If JSONData is not an object then JSON.parse parses the string in an object
