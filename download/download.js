@@ -27,3 +27,54 @@ var sessionData = {
 }
 
 // FUNCTIONS:
+
+$(document).ready(function(){
+  $("button").click(function(){
+    var data = sessionData.summary;
+    csvMaker(data, "Session Report", true);
+    });
+  });
+
+  function csvMaker(JSONData, ReportTitle, ShowLabel) {
+    //If JSONData is not an object then JSON.parse parses the string in an object
+    var arrData = typeof JSONData != "object" ? JSON.parse(JSONData) : JSONData;
+
+    // This variable is where all the data extracted from the object array is stored
+    var CSV = "";
+
+    //Set Report title in first row or line
+    CSV += ReportTitle + '\r\n\n';
+
+    //This condition will generate the Label/Header if there is a string in the third argument
+    if (ShowLabel === true) {
+      var row = "";
+      for (var index in arrData[0]) {
+        row += index + ",";
+      }
+      row = row.slice(0, -1);
+      CSV += row + "\r\n";
+    }
+
+    //1st loop extracts each row, 2nd loop extracts the contents
+    for (var i = 0; i < arrData.length; i++) {
+      var row = "";
+      for (var index in arrData[i]) {
+        row += '"' + arrData[i][index] + '",';
+      }
+      row.slice(0, row.length - 1);
+      CSV += row + '\r\n';
+    }
+
+    var fileName = "Report_";
+    fileName += ReportTitle.replace(/ /g,"_");
+    var uri = "data:text/csv;charset=utf-8," + encodeURI(CSV);
+
+    var link = document.createElement("a");
+    link.href = uri;
+    link.style = "visibility:hidden";
+    link.download = fileName + ".csv";
+
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
