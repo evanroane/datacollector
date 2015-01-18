@@ -92,8 +92,8 @@
 
   vm.logArrayElements = function(element, index, array) {
     var name = element;
-    var frequency = _.where($scope.behaviorInstances, {"name": element}).length;
     var duration = endTime - startTime;
+    var frequency = _.where($scope.behaviorInstances, {"name": element}).length;
     var rpm = vm.round((frequency / duration) * 60, 2);
     var summaryItem = {
       "name": element,
@@ -110,6 +110,7 @@
   vm.saveSession = function(codeSetId, desc) {
     if (timerRunning === false) {
       vm.makeSessionSummary();
+      var duration = endTime - startTime;
       var behaviorInstances = $scope.behaviorInstances;
       var name = $scope.sessionLabel;
       var desc = $scope.sessionDesc;
@@ -117,6 +118,7 @@
       var sessionRecord = {
         "startDate": startTime,
         "endDate": endTime,
+        "duration": duration,
         "name": name,
         "description": desc,
         "codeSetName": codeSetId,

@@ -30,43 +30,50 @@ var sessionData = {
 
 $(document).ready(function(){
   $("button").click(function(){
-    var data = sessionData.summary;
-    csvMaker(data, "Session Report", true);
+    var summary = sessionData.summary;
+    var instances = sessionData.behaviorInstances;
+    csvMaker(summary, instances);
     });
   });
 
-  function csvMaker(JSONData, ReportTitle, ShowLabel) {
+  function csvMaker(s, d) {
     //If JSONData is not an object then JSON.parse parses the string in an object
-    var arrData = typeof JSONData != "object" ? JSON.parse(JSONData) : JSONData;
+    var arrData = s;
 
     // This variable is where all the data extracted from the object array is stored
     var CSV = "";
-
-    //Set Report title in first row or line
-    CSV += ReportTitle + '\r\n\n';
-
-    //This condition will generate the Label/Header if there is a string in the third argument
-    if (ShowLabel === true) {
-      var row = "";
-      for (var index in arrData[0]) {
-        row += index + ",";
-      }
-      row = row.slice(0, -1);
-      CSV += row + "\r\n";
-    }
+    CSV += "Session Summary" + "\r\n\n";
+    CSV += "Name:," + sessionData.name + ",\r\n";
+    CSV += "Description:," + sessionData.description + ",\r\n";
+    CSV += "Code Set:," + sessionData.codeSetName + ",\r\n";
+    //use moment here \/
+    CSV += "Started:," + sessionData.startDate + ",\r\n";
+    CSV += "Ended:," + sessionData.endDate + ",\r\n\n";
+    CSV += "Summary Data:" + ",\r\n";
+    CSV += "Frequency,Behavior,RPM,\r\n"
 
     //1st loop extracts each row, 2nd loop extracts the contents
-    for (var i = 0; i < arrData.length; i++) {
+    for (var i = 0; i < s.length; i++) {
       var row = "";
-      for (var index in arrData[i]) {
-        row += '"' + arrData[i][index] + '",';
+      for (var index in s[i]) {
+        row += '"' + s[i][index] + '",';
+      }
+      row.slice(0, row.length - 1);
+      CSV += row + '\r\n';
+    }
+    CSV += "\r\n" + "Raw Data:" + "\r\n";
+    CSV += "Behavior, Seconds, Index,\r\n";
+    for (var i = 0; i < d.length; i++) {
+      var row = "";
+      for (var index in d[i]) {
+        row += '"' + d[i][index] + '",';
       }
       row.slice(0, row.length - 1);
       CSV += row + '\r\n';
     }
 
     var fileName = "Report_";
-    fileName += ReportTitle.replace(/ /g,"_");
+    fileName += sessionData.name.replace(/ /g,"_");
     var uri = "data:text/csv;charset=utf-8," + encodeURI(CSV);
 
     var link = document.createElement("a");
