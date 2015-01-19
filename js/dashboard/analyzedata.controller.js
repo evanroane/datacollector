@@ -16,9 +16,6 @@
         .format("dddd, MMMM Do YYYY, h:mm:ss a");
       $scope.instances = vm.sessionData.behaviorInstances;
       $scope.summary = vm.sessionData.summary;
-
-      console.log($scope.instances);
-      console.log($scope.summary);
     });
 
     vm.csvMaker = function() {
@@ -26,26 +23,36 @@
       var d = vm.sessionData.behaviorInstances;
       // This variable is where all the data extracted from the object array is stored
       var CSV = "";
-      CSV += "Session Summary" + "\r\n\n";
-      CSV += "Name:," + vm.sessionData.name + ",\r\n";
-      CSV += "Description:," + vm.sessionData.description + ",\r\n";
-      CSV += "Code Set:," + vm.sessionData.codeSetName + ",\r\n";
-      CSV += "Started:," + $scope.startDate + ",\r\n";
-      CSV += "Ended:," + $scope.endDate + ",\r\n\n";
-      CSV += "Summary Data:" + ",\r\n";
-      CSV += "Frequency,Behavior,RPM,\r\n"
+      CSV += '"Session Summary"' + '\r\n\n';
+      CSV += '"Name:",' + '"' + vm.sessionData.name + '"\r\n';
+      CSV += '"Description:",' + '"' + vm.sessionData.description + '"\r\n';
+      CSV += '"Code Set:",' + '"' + vm.sessionData.codeSetName + '"\r\n';
+      CSV += '"Started:",' + '"' + $scope.startDate + '"\r\n';
+      CSV += '"Ended:",' + '"' + $scope.endDate + '"\r\n\n';
 
-      //1st loop extracts each row, 2nd loop extracts the contents
-      for (var i = 0; i < s.length; i++) {
-        var row = "";
-        for (var index in s[i]) {
-          row += '"' + s[i][index] + '",';
-        }
-        row.slice(0, row.length - 1);
-        CSV += row + '\r\n';
-      }
-      CSV += "\r\n" + "Raw Data:" + "\r\n";
-      CSV += "Behavior, Seconds, Index,\r\n";
+      CSV += '"Summary Data:"' + '\r\n';
+      CSV += '"Behavior","Frequency","RPM"\r\n'
+
+      // s.forEach( function(i) {
+      //   var row = "";
+      //   var behaviorName = i.name;
+      //   var frequency = i.frequency;
+      //   var rpm = i.rpm;
+      //   row =+ behaviorName + '","' + frequency + '","' + rpm + '"\r\n';
+      //   CSV =+ row;
+      // });
+
+      // for (var i = 0; i < s.length; i++) {
+      //   var row = "";
+      //   for (var index in s[i]) {
+      //     row += '"' + s[i][index] + '",';
+      //   }
+      //   row.slice(0, row.length - 1);
+      //   CSV += row + '\r\n';
+      // }
+
+      CSV += '\r\n' + '"Raw Data:"' + '\r\n';
+      CSV += '"Behavior", "Seconds"\r\n';
       for (var i = 0; i < d.length; i++) {
         var row = "";
         for (var index in d[i]) {
