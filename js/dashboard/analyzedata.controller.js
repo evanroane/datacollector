@@ -6,22 +6,17 @@
     var vm = this;
     var id = $routeParams.id;
 
-
     sessionDataFactory.getSessionData(id, function(data){
       vm.sessionData = data;
-
       $scope.startDate = moment(vm.sessionData.startDate)
         .format("dddd, MMMM Do YYYY, h:mm:ss a");
       $scope.endDate = moment(vm.sessionData.endDate)
         .format("dddd, MMMM Do YYYY, h:mm:ss a");
-      $scope.instances = vm.sessionData.behaviorInstances;
-      $scope.summary = vm.sessionData.summary;
     });
 
     vm.csvMaker = function() {
       var s = vm.sessionData.summary;
       var d = vm.sessionData.behaviorInstances;
-      // This variable is where all the data extracted from the object array is stored
       var CSV = "";
       CSV += '"Session Summary"' + '\r\n\n';
       CSV += '"Name:",' + '"' + vm.sessionData.name + '"\r\n';
@@ -32,35 +27,20 @@
 
       CSV += '"Summary Data:"' + '\r\n';
       CSV += '"Behavior","Frequency","RPM"\r\n'
-
-      // s.forEach( function(i) {
-      //   var row = "";
-      //   var behaviorName = i.name;
-      //   var frequency = i.frequency;
-      //   var rpm = i.rpm;
-      //   row =+ behaviorName + '","' + frequency + '","' + rpm + '"\r\n';
-      //   CSV =+ row;
-      // });
-
-      // for (var i = 0; i < s.length; i++) {
-      //   var row = "";
-      //   for (var index in s[i]) {
-      //     row += '"' + s[i][index] + '",';
-      //   }
-      //   row.slice(0, row.length - 1);
-      //   CSV += row + '\r\n';
-      // }
+      s.forEach( function(i) {
+        //console.log( '"' + i.name + '","' + i.frequency + '","' + i.rpm + '"');
+        var row = "";
+        row += '"' + i.name + '","' + i.frequency + '","' + i.rpm + '"'
+        CSV += row + '\r\n';
+      });
 
       CSV += '\r\n' + '"Raw Data:"' + '\r\n';
-      CSV += '"Behavior", "Seconds"\r\n';
-      for (var i = 0; i < d.length; i++) {
+      CSV += '"Behavior","Seconds"' + '\r\n';
+      d.forEach( function(i){
         var row = "";
-        for (var index in d[i]) {
-          row += '"' + d[i][index] + '",';
-        }
-        row.slice(0, row.length - 1);
+        row += '"' + i.name + '","' + i.time + '"';
         CSV += row + '\r\n';
-      }
+      });
 
       var fileName = "Report_";
       fileName += vm.sessionData.name.replace(/ /g,"_");
