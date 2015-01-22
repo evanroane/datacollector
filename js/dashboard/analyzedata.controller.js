@@ -23,7 +23,8 @@
       CSV += '"Description:",' + '"' + vm.sessionData.description + '"\r\n';
       CSV += '"Code Set:",' + '"' + vm.sessionData.codeSetName + '"\r\n';
       CSV += '"Started:",' + '"' + $scope.startDate + '"\r\n';
-      CSV += '"Ended:",' + '"' + $scope.endDate + '"\r\n\n';
+      CSV += '"Ended:",' + '"' + $scope.endDate + '"\r\n';
+      CSV += '"Duration in Seconds:",' + '"' + vm.sessionData.duration + '"\r\n\n';
 
       CSV += '"Summary Data:"' + '\r\n';
       CSV += '"Behavior","Frequency","RPM"\r\n'
