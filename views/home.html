@@ -17,10 +17,17 @@
       </div>
       <div class="list-group-item list-group-item-home media">
         <div class="section">
-          <a class='btn btn-primary' href='#/createaccount'><i class="fa fa-key fa-lg"></i> Create Account</a>
+          <a ng-hide="user" class="btn btn-primary" href="#/createaccount">
+            <i class="fa fa-key fa-lg"></i> Create Account
+          </a>
+          <a ng-show="user" class="btn btn-primary" href="#/mydashboard">
+            <i class="fa fa-tachometer fa-lg"></i> My Dashboard
+          </a>
         </div>
-        <div class="section">
-          <a class='btn btn-primary' href="#/login"><i class="fa fa-unlock fa-lg"></i> Login</a>
+        <div ng-hide="user" class="section">
+          <a class='btn btn-primary' href="#/login">
+            <i class="fa fa-unlock fa-lg"></i> Login
+          </a>
         </div>
       </div>
     </div>

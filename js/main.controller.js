@@ -2,7 +2,7 @@
   'use strict';
 
 angular.module('batApp')
-  .controller('MainController', function($rootScope, $scope){
+  .controller('MainController', function($rootScope, $scope, FIREBASE_URL) {
 
     $rootScope.$on('$routeChangeStart', function(){
       $rootScope.loading = true;
