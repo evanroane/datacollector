@@ -110,7 +110,7 @@
   vm.saveSession = function(codeSetId, desc) {
     if (timerRunning === false) {
       vm.makeSessionSummary();
-      var duration = endTime - startTime;
+      var duration = moment.duration(endTime - startTime).asSeconds();
       var behaviorInstances = $scope.behaviorInstances;
       var name = $scope.sessionLabel;
       var desc = $scope.sessionDesc;
