@@ -7,14 +7,13 @@
 
     SharedState.initialize($scope, "activeDropdown");
 
-
     $scope.codeSetData = {
       codeSetId: "",
       description: "",
       inputs: [
         {
           name: "",
-          color: ""
+          color: "btn-primary"
         }
       ]
     };
@@ -24,7 +23,7 @@
       $scope.codeSetData.inputs.push(
         {
           "name": "",
-          "color": ""
+          "color": "btn-primary"
         }
       );
     };
@@ -77,11 +76,9 @@
     };
 
     $scope.addNewInput = function() {
-      var newInputNum = $scope.inputs.length + 1;
       var input =   {
-        "id": "input" + newInputNum,
         "name": "",
-        "color": ""
+        "color": "btn-primary"
       }
       $scope.inputs.push(input);
     };
