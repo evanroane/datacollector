@@ -25,7 +25,7 @@
           templateUrl: 'views/changepassword.html',
           controller: 'ChangePasswordController',
           controllerAs: 'changepw',
-          private: true,
+          private: false,
           reloadOnSearch: false
         })
 

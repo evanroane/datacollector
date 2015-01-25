@@ -16,7 +16,8 @@
 
       vm.login = function() {
         authFactory.login(vm.email, vm.password, function() {
-          $location.path('/mydashboard');
+          authFactory.requireLogin();
+          //$location.path('/mydashboard');
           $scope.$apply();
         });
       };
