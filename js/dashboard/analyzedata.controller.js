@@ -18,32 +18,31 @@
       var s = vm.sessionData.summary;
       var d = vm.sessionData.behaviorInstances;
       var CSV = "";
-      CSV += '"Session Summary"' + '\r\n\n';
-      CSV += '"Name:",' + '"' + vm.sessionData.name + '"\r\n';
-      CSV += '"Description:",' + '"' + vm.sessionData.description + '"\r\n';
-      CSV += '"Code Set:",' + '"' + vm.sessionData.codeSetName + '"\r\n';
-      CSV += '"Started:",' + '"' + $scope.startDate + '"\r\n';
-      CSV += '"Ended:",' + '"' + $scope.endDate + '"\r\n';
-      CSV += '"Duration in Seconds:",' + '"' + vm.sessionData.duration + '"\r\n\n';
+      CSV += 'Session Summary' + ',,\r\n,,\n';
+      CSV += 'Name:,' + vm.sessionData.name + ',\r\n';
+      CSV += 'Description:,' + vm.sessionData.description + ',\r\n';
+      CSV += 'Code Set:,' + vm.sessionData.codeSetName + ',\r\n';
+      CSV += 'Started:,' + '"' + $scope.startDate + '"' + ',\r\n';
+      CSV += 'Ended:,' + '"' + $scope.endDate + '"' + ',\r\n';
+      CSV += 'Duration in Seconds:,' + vm.sessionData.duration + ',\r\n,,\n';
 
-      CSV += '"Summary Data:"' + '\r\n';
-      CSV += '"Behavior","Frequency","RPM"\r\n'
+      CSV += 'Summary Data:' + ',,\r\n';
+      CSV += 'Behavior,Frequency,RPM\r\n'
       s.forEach( function(i) {
-        //console.log( '"' + i.name + '","' + i.frequency + '","' + i.rpm + '"');
         var row = "";
-        row += '"' + i.name + '","' + i.frequency + '","' + i.rpm + '"'
+        row += i.name + ',' + i.frequency + ',' + i.rpm;
         CSV += row + '\r\n';
       });
 
-      CSV += '\r\n' + '"Raw Data:"' + '\r\n';
-      CSV += '"Behavior","Seconds"' + '\r\n';
+      CSV += ',,\r\n' + 'Raw Data:' + ',,\r\n';
+      CSV += 'Behavior,Seconds' + ',\r\n';
       d.forEach( function(i){
         var row = "";
-        row += '"' + i.name + '","' + i.time + '"';
-        CSV += row + '\r\n';
+        row += i.name + ',' + i.time;
+        CSV += row + ',\r\n';
       });
 
-      var fileName = "Report_";
+      var fileName = 'Report_';
       fileName += vm.sessionData.name.replace(/ /g,"_");
       var uri = "data:text/csv;charset=utf-8," + encodeURI(CSV);
 

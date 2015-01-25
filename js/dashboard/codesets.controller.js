@@ -20,7 +20,7 @@
     };
 
     $scope.addNewInput = function() {
-      var newInputNum = $scope.codeSetData.inputs.length + 1;
+      //var newInputNum = $scope.codeSetData.inputs.length + 1;
       $scope.codeSetData.inputs.push(
         {
           "name": "",
@@ -36,7 +36,6 @@
       else {
         console.log("you can't have less than one");
       }
-
   };
 
     vm.addNewCodeSet = function() {
@@ -70,6 +69,7 @@
     codeSetFactory.getCodeSet(id, function(data) {
       vm.codeSetData = data;
       $scope.codeSetData = vm.codeSetData;
+      $scope.inputs = vm.codeSetData.inputs;
     });
 
     vm.addNewCodeSet = function() {
@@ -77,26 +77,23 @@
     };
 
     $scope.addNewInput = function() {
-      var newInputNum = vm.codeSetData.inputs.length+1;
-      vm.codeSetData.inputs.push(
-        {
-          "id": "input" + newInputNum,
-          "name": "",
-          "color": ""
-        }
-      );
+      var newInputNum = $scope.inputs.length + 1;
+      var input =   {
+        "id": "input" + newInputNum,
+        "name": "",
+        "color": ""
+      }
+      $scope.inputs.push(input);
     };
 
     $scope.deleteInput = function(index) {
-      if (vm.codeSetData.inputs.length > 1) {
-        vm.codeSetData.inputs.splice(index, 1);
+      if ($scope.inputs.length > 1) {
+        $scope.inputs.splice(index, 1);
       }
       else {
         console.log("you can't have less than one");
       }
-
     };
-
   })
 
 }());
