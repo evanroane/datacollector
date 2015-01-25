@@ -5,7 +5,7 @@
       var vm = this;
       vm.changePassword = function() {
         authFactory.changePassword(vm.oldPassword, vm.newPassword, function(){
-          $location.path('/logout');
+          $location.path('/mydashboard');
           $scope.$apply();
         })
       };

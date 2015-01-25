@@ -25,13 +25,9 @@
           templateUrl: 'views/changepassword.html',
           controller: 'ChangePasswordController',
           controllerAs: 'changepw',
-          private: false,
+          private: true,
           reloadOnSearch: false
         })
-        // .when('/logout', {
-        //   templateUrl: 'views/logout.html',
-        //   reloadOnSearch: false
-        // })
 
     })
     .run(function($rootScope, authFactory){
