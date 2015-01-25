@@ -8,6 +8,7 @@ angular.module('batApp')
         templateUrl: 'views/dashboard/newsession.html',
         controller: 'ShowCodeSetController',
         controllerAs: 'viewCodeSet',
+        private: true,
         reloadOnSearch: false
       }
     );
@@ -16,6 +17,7 @@ angular.module('batApp')
         templateUrl: 'views/dashboard/previoussessiondata.html',
         controller: 'SessionDataController',
         controllerAs: 'dataSets',
+        private: true,
         reloadOnSearch: false
       }
     );
@@ -24,6 +26,7 @@ angular.module('batApp')
         templateUrl: 'views/dashboard/rawsessiondata.html',
         controller: 'AnalyzeDataController',
         controllerAs: 'dataSet',
+        private: true,
         reloadOnSearch: false
       }
     );
@@ -32,6 +35,7 @@ angular.module('batApp')
         templateUrl: 'views/dashboard/download.html',
         controller: 'AnalyzeDataController',
         controllerAs: 'dataSet',
+        private: true,
         reloadOnSearch: false
       }
     );
@@ -40,6 +44,7 @@ angular.module('batApp')
         templateUrl: 'views/dashboard/sessiondatasummary.html',
         controller: 'AnalyzeDataController',
         controllerAs: 'dataSet',
+        private: true,
         reloadOnSearch: false
       }
     );
@@ -48,6 +53,7 @@ angular.module('batApp')
         templateUrl: 'views/dashboard/managecodesets.html',
         controller: 'ShowCodeSetController',
         controllerAs: 'viewCodeSet',
+        private: true,
         reloadOnSearch: false
       }
     );
@@ -56,6 +62,7 @@ angular.module('batApp')
         templateUrl: 'views/dashboard/newcodeset.html',
         controller: 'CodeSetController',
         controllerAs: 'codeSet',
+        private: true,
         reloadOnSearch: false
       }
     );
@@ -64,6 +71,7 @@ angular.module('batApp')
       templateUrl: 'views/dashboard/editcodeset.html',
       controller: 'EditCodeSetController',
       controllerAs: 'codeSet',
+      private: true,
       reloadOnSearch: false
     }
     );
@@ -72,6 +80,7 @@ angular.module('batApp')
         templateUrl: 'views/dashboard/session.html',
         controller: 'TimeController',
         controllerAs: 'time',
+        private: true,
         reloadOnSearch: false
       }
     );
@@ -80,6 +89,7 @@ angular.module('batApp')
         templateUrl: 'views/dashboard/editsessiondata.html',
         controller: 'EditSessionDataController',
         controllerAs: 'edit',
+        private: true,
         reloadOnSearch: false
       }
     );

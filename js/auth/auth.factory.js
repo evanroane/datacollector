@@ -64,6 +64,8 @@
       factory.logout = function(cb){
         ref.unauth(function(){
           $rootScope.user = null;
+          var target = document.querySelector('h4');
+          target.appendChild(document.createTextNode("You are now logged out of B.A.T."));
           cb();
         });
       };

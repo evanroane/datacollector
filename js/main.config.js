@@ -23,11 +23,5 @@
           reloadOnSearch: false
         }
       );
-      $routeProvider.when('/logout',
-        {
-          templateUrl: 'views/logout.html',
-          reloadOnSearch: false
-        }
-      );
     })
 }());

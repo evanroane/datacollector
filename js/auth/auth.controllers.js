@@ -1,5 +1,6 @@
 ;(function() {
   angular.module('batApp')
+
     .controller('ChangePasswordController', function($scope, $location, authFactory) {
       var vm = this;
       vm.changePassword = function() {
@@ -9,6 +10,7 @@
         })
       };
     })
+
     .controller('LoginController', function(authFactory, $scope, $location) {
       var vm = this;
 
@@ -29,9 +31,14 @@
         authFactory.resetPassword(vm.email);
       };
     })
+
     .controller('LogoutController', function($scope, $location, authFactory) {
-      authFactory.logout(function() {
-        
-      });
+      var vm = this;
+      vm.logout = function() {
+        authFactory.logout(function(){
+          //$location.path('/home');
+          $scope.$apply();
+        });
+      }
     })
 }());
