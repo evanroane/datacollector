@@ -65,7 +65,6 @@
         ref.unauth(function(){
           $rootScope.user = null;
           cb();
-          ///////////////////////
         });
       };
 
