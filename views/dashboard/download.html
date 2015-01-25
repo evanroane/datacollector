@@ -1,5 +1,5 @@
 <div ui-content-for="title">
-  <span>Download Session Data</span>
+  <span>Download Data</span>
 </div>
 
 <div class="scrollable">
@@ -16,7 +16,6 @@
           </p>
         </div>
       </div>
-
 
       <div class="panel panel-default">
         <div class="panel-heading">
@@ -63,7 +62,7 @@
             <tr>
               <th>Behavior:</th>
               <th>Frequency:</th>
-              <th>Responses per Minute:</th>
+              <th>RPM:</th>
             </tr>
             <tr ng-repeat="behavior in dataSet.sessionData.summary">
               <td>{{behavior.name}}</td>
@@ -74,7 +73,7 @@
           <table class="table table-condensed table-striped table-bordered">
             <tr class="info"><th colspan="3">Session Data:</th></tr>
             <tr>
-              <th>Index</th>
+              <th>Sequence</th>
               <th>Behavior Name</th>
               <th>Seconds</th>
             </tr>
