@@ -31,6 +31,7 @@
     })
     .controller('LogoutController', function($scope, $location, authFactory) {
       authFactory.logout(function() {
+        
       });
     })
 }());
