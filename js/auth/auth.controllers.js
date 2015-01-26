@@ -17,7 +17,7 @@
       vm.login = function() {
         authFactory.login(vm.email, vm.password, function() {
           authFactory.requireLogin();
-          //$location.path('/mydashboard');
+          $location.path('/mydashboard');
           $scope.$apply();
         });
       };
@@ -37,7 +37,6 @@
       var vm = this;
       vm.logout = function() {
         authFactory.logout(function(){
-          //$location.path('/home');
           $scope.$apply();
         });
       }
