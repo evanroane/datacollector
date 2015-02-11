@@ -16,6 +16,9 @@
           <i class="fa fa-tachometer fa-lg"></i>
           My Dashboard
         </a>
+        <a href=""
+            ui-turn-on="modal2"
+            class="btn btn-default">Show Overlay</a>
       </div>
     </div>
 
@@ -39,4 +42,8 @@
     </div>
 
   </div>
+</div>
+
+<div ui-content-for="modals">
+  <div ng-include="'views/dashboard/modal2.html'"></div>
 </div>

@@ -14,7 +14,7 @@
       .format("dddd, MMMM Do YYYY, h:mm:ss a");
       $scope.endDate = moment(vm.sessionData.endDate)
       .format("dddd, MMMM Do YYYY, h:mm:ss a");
-      
+
     });
 
     vm.deleteDataSet = function(sessionDataId) {
