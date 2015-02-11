@@ -1,10 +1,11 @@
 ;(function() {
   angular.module('batApp')
 
-    .controller('ChangePasswordController', function($scope, $location, authFactory) {
+    .controller('ChangePasswordController', function($rootScope, $scope, $location, authFactory) {
       var vm = this;
       vm.changePassword = function() {
         authFactory.changePassword(vm.oldPassword, vm.newPassword, function(){
+
           $location.path('/mydashboard');
           $scope.$apply();
         })

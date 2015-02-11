@@ -10,7 +10,7 @@
         if (!_isLoggedIn()) {
           $location.path('/login');
         } else if (_hasTemporaryPassword()) {
-          $location.path('/changepassword');
+          //$location.path('/changepassword');
         }
       };
 
