@@ -36,7 +36,7 @@
 
       CSV += ',,\r\n' + 'Raw Data:' + ',,\r\n';
       CSV += 'Behavior,Seconds' + ',\r\n';
-      d.forEach( function(i){
+      d.forEach( function(i) {
         var row = "";
         row += i.name + ',' + i.time;
         CSV += row + ',\r\n';
