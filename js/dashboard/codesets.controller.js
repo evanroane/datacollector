@@ -45,21 +45,21 @@
     };
   })
 
-  .controller('ShowCodeSetController', function($scope, $routeParams, codeSetFactory) {
-    var vm = this;
-    var id = $routeParams.id;
-
-    codeSetFactory.getAllCodeSets(function(data){
-      vm.codeSet = data;
-    });
-
-    vm.removeCodeSet = function(codeSetId) {
-      codeSetFactory.deleteCodeSet(codeSetId, function() {
-        delete vm.codeSet[codeSetId];
-      });
-    };
-
-  })
+  // .controller('ShowCodeSetController', function($scope, $routeParams, codeSetFactory) {
+  //   var vm = this;
+  //   var id = $routeParams.id;
+  //
+  //   codeSetFactory.getAllCodeSets(function(data){
+  //     vm.codeSet = data;
+  //   });
+  //
+  //   vm.removeCodeSet = function(codeSetId) {
+  //     codeSetFactory.deleteCodeSet(codeSetId, function() {
+  //       delete vm.codeSet[codeSetId];
+  //     });
+  //   };
+  //
+  // })
 
   .controller('EditCodeSetController', function($scope, $routeParams, codeSetFactory) {
     var vm = this;

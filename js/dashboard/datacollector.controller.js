@@ -1,8 +1,25 @@
+// .controller('ShowCodeSetController', function($scope, $routeParams, codeSetFactory) {
+//   var vm = this;
+//   var id = $routeParams.id;
+//
+//   codeSetFactory.getAllCodeSets(function(data){
+//     vm.codeSet = data;
+//   });
+//
+//   vm.removeCodeSet = function(codeSetId) {
+//     codeSetFactory.deleteCodeSet(codeSetId, function() {
+//       delete vm.codeSet[codeSetId];
+//     });
+//   };
+//
+// })
 ;(function() {
   'use strict';
 
   angular.module('batApp')
-  .controller('TimeController', function($scope, $routeParams, $location, codeSetFactory, timeFactory) {
+  .controller('ShowCodeSetController', function($scope, $routeParams, $location, codeSetFactory, timeFactory, SharedState) {
+
+  SharedState.initialize($scope, 'sessionOverlay');
 
   var vm = this;
   var id = $routeParams.id;
@@ -18,10 +35,20 @@
   $scope.sessionLabel = "";
   $scope.sessionDesc = "";
 
-  codeSetFactory.getCodeSet(id, function(data){
-    vm.codeSetData = data;
-    $scope.inputs = vm.codeSetData.inputs
+  // codeSetFactory.getCodeSet(id, function(data) {
+  //   vm.codeSetData = data;
+  //   $scope.inputs = vm.codeSetData.inputs
+  // });
+
+  codeSetFactory.getAllCodeSets(function(data){
+    vm.codeSet = data;
   });
+
+  vm.removeCodeSet = function(codeSetId) {
+    codeSetFactory.deleteCodeSet(codeSetId, function() {
+      delete vm.codeSet[codeSetId];
+    });
+  };
 
   vm.displayTimer = function() {
     var secondsSinceBegin = moment.duration(Date.now() - startTime).asSeconds();

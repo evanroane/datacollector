@@ -16,37 +16,102 @@
           <i class="fa fa-tachometer fa-lg"></i>
           My Dashboard
         </a>
-        <a href=""
-            ui-turn-on="modal2"
-            class="btn btn-default">Show Overlay</a>
       </div>
     </div>
 
     <div class='section'>
       <div ng-repeat="(codeSetId, codeSet) in viewCodeSet.codeSet">
         <div class="panel panel-default">
+
           <div class="panel-heading">
             <div class="btn-group pull-right">
-              <a class="btn btn-default btn-sm" href="/#/codeset/{{codeSetId}}">
+              <!-- <a class="btn btn-default btn-sm" href="/#/codeset/{{codeSetId}}">
                 Begin
-                  <i class="fa fa-play"></i>
-              </a>
+                <i class="fa fa-play"></i>
+              </a> -->
               <a href=""
-                  ui-turn-on="modal2"
-                  class="btn btn-default">Show Overlay</a>
+                ui-turn-on="codeSetId"
+                class="btn btn-default btn-sm">
+                Begin
+                <i class="fa fa-play"></i>
+              </a>
+            </div>
+            <h3 class="panel-title">{{codeSet.codeSetId}}</h3>
           </div>
-          <h3 class="panel-title">{{codeSet.codeSetId}}</h3>
+          <div class="panel-body">
+            {{codeSet.description}}
+          </div>
         </div>
-        <div class="panel-body">
-          {{codeSet.description}}
+        <!-- Modal Code : -->
+        <div ui-content-for="modals">
+
+          <div class="modal modal-overlay"
+            ui-if='codeSetId'
+            ui-state='codeSetId'
+            >
+
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button class="close"
+                          ui-turn-off="codeSetId">&times;</button>
+                  <h4 class="modal-title">Current Session</h4>
+                </div>
+                <div class="modal-body">
+                  <div class="section">
+                    <div class="stopwatch bottomline">
+                      <div id="time-container">00:00:00</div>
+                    </div>
+                    Number of Events Recorded: {{dataEventCounter}}
+                    <div class="start-stop-btns">
+                      <div class="start-left">
+                        <a class="btn btn-success btn-block" ng-click="codeSetcodeSet.startTimer()">Start</a>
+                      </div>
+                      <div class="stop-right">
+                        <a class="btn btn-danger btn-block" ng-click="codeSet.stopTimer()">Stop</a>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="section">
+                      <div class="usr-btns">
+
+                        <div class="usr-btn" ng-repeat="(id, button) in codeSet.inputs">
+                          <a class="btn btn-block" ng-class="button.color" ng-click="codeSet.dataEvent(button.name, button.id)">{{button.name}}</a>
+                        </div>
+
+                      </div>
+                  </div>
+
+                  <div class="section">
+                    <div class="records"></div>
+                  </div>
+
+                  <div class="section">
+                    <label>Session Name:</label>
+                    <input type="text" class="form-control" ng-model="sessionLabel">
+                  </div>
+
+                  <div class="section">
+                    <label>Session Description:</label>
+                    <input type="text" class="form-control" ng-model="sessionDesc">
+                  </div>
+
+                  <div class="section">
+                    <a class="btn btn-block btn-danger" ng-click="codeSet.saveSession(codeSet.codeSetData.codeSetId, codeSet.codeSetData.description)">Save Session</a>
+                  </div>
+
+                </div>
+                <div class="modal-footer">
+                  <button ui-turn-off="codeSetId" class="btn btn-default">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+        <!-- End Modal Code -->
       </div>
-    </div>
     </div>
 
   </div>
-</div>
-
-<div ui-content-for="modals">
-  <div ng-include="'views/dashboard/modal2.html'"></div>
 </div>
