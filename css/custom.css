@@ -156,3 +156,7 @@ pre {
 input.scrollable-header {
   border-bottom: 3px solid #ccc;
 }
+
+.batlogo {
+  max-width: 50%;
+}
