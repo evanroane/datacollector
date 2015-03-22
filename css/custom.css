@@ -160,3 +160,7 @@ input.scrollable-header {
 .batlogo {
   max-width: 50%;
 }
+
+.sm-batlogo {
+  max-width: 2.5em;
+}
